@@ -57,7 +57,28 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
+                        <%--______Actualizar_____--%>
+                        <div class="sb-sidenav-menu-heading fw-bolder text-center h1">Modificar</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsActualizar" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-redo-alt"></i></div>
+                            Actualizar
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsActualizar" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../Actualizar/ActualizarProvedor.aspx">Provedores</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarArticulo.aspx">Articulo</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarChofer.aspx">Chofer</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarCliente.aspx">Cliente</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarDireccion.aspx">Direccion</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarTraslado.aspx">Traslado</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarArticuloTransporte.aspx">Articulo Transporte</a>
+                            </nav>
+                        </div>
+                        <%--___________--%>
 
 
 

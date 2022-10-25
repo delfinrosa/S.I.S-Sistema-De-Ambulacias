@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace LibSIS
 {
     public class ObjSIS
@@ -35,6 +35,13 @@ namespace LibSIS
                     return strError;
                 }
             }
+            public static DataTable VerificarArticulo(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Articulo]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+
         }
         public class Proveedor
         {

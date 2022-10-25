@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Actualizar\ActualizarArticulo.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\estiloSIS.css" />
@@ -75,16 +76,6 @@
     <Content Include="inicio.aspx" />
     <Content Include="js\datatables-simple-demo.js" />
     <Content Include="js\scripts.js" />
-    <Content Include="Actualizar\ActualizarArticulo.aspx" />
-    <Content Include="Actualizar\ActualizarArticuloTransporte.aspx" />
-    <Content Include="Actualizar\ActualizarChofer.aspx" />
-    <Content Include="Actualizar\ActualizarCliente.aspx" />
-    <Content Include="Actualizar\ActualizarClienteDirecciones.aspx" />
-    <Content Include="Actualizar\ActualizarDesperfectoMecanico.aspx" />
-    <Content Include="Actualizar\ActualizarDireccion.aspx" />
-    <Content Include="Actualizar\ActualizarMedioTransporte.aspx" />
-    <Content Include="Actualizar\ActualizarProvedor.aspx" />
-    <Content Include="Actualizar\ActualizarTraslado.aspx" />
     <Content Include="Registro\RegistroArticulo.aspx" />
     <Content Include="Registro\RegistroArticuloTransporte.aspx" />
     <Content Include="Registro\RegistroChofer.aspx" />
@@ -98,6 +89,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actualizar\ActualizarArticulo.aspx.cs">
+      <DependentUpon>ActualizarArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actualizar\ActualizarArticulo.aspx.designer.cs">
+      <DependentUpon>ActualizarArticulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inicio.aspx.cs">
       <DependentUpon>inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,76 +104,6 @@
       <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Actualizar\ActualizarArticulo.aspx.cs">
-      <DependentUpon>ActualizarArticulo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarArticulo.aspx.designer.cs">
-      <DependentUpon>ActualizarArticulo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarArticuloTransporte.aspx.cs">
-      <DependentUpon>ActualizarArticuloTransporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarArticuloTransporte.aspx.designer.cs">
-      <DependentUpon>ActualizarArticuloTransporte.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarChofer.aspx.cs">
-      <DependentUpon>ActualizarChofer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarChofer.aspx.designer.cs">
-      <DependentUpon>ActualizarChofer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarCliente.aspx.cs">
-      <DependentUpon>ActualizarCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarCliente.aspx.designer.cs">
-      <DependentUpon>ActualizarCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarClienteDirecciones.aspx.cs">
-      <DependentUpon>ActualizarClienteDirecciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarClienteDirecciones.aspx.designer.cs">
-      <DependentUpon>ActualizarClienteDirecciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarDesperfectoMecanico.aspx.cs">
-      <DependentUpon>ActualizarDesperfectoMecanico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarDesperfectoMecanico.aspx.designer.cs">
-      <DependentUpon>ActualizarDesperfectoMecanico.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarDireccion.aspx.cs">
-      <DependentUpon>ActualizarDireccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarDireccion.aspx.designer.cs">
-      <DependentUpon>ActualizarDireccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarMedioTransporte.aspx.cs">
-      <DependentUpon>ActualizarMedioTransporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarMedioTransporte.aspx.designer.cs">
-      <DependentUpon>ActualizarMedioTransporte.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarProvedor.aspx.cs">
-      <DependentUpon>ActualizarProvedor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarProvedor.aspx.designer.cs">
-      <DependentUpon>ActualizarProvedor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarTraslado.aspx.cs">
-      <DependentUpon>ActualizarTraslado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Actualizar\ActualizarTraslado.aspx.designer.cs">
-      <DependentUpon>ActualizarTraslado.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Registro\RegistroArticulo.aspx.cs">
       <DependentUpon>RegistroArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LibSIS;
-using System.Configuration;
+using System.Configuration; 
 
-namespace S.I.S_Sistema_De_Ambulacias.Reportes
+namespace S.I.S_Sistema_De_Ambulacias.Actualizar
 {
     public partial class ActualizarArticulo : System.Web.UI.Page
     {
@@ -16,25 +16,11 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
 
         }
 
-        //protected void btnInsertarArticulo_Click(object sender, EventArgs e)
-        //{
-        //    ObjSIS.Articulo ObjArticulo = new ObjSIS.Articulo();
-        //    ObjArticulo.Descripcion = TxBoxDescripcion.Text;
-        //    ObjArticulo.precioUnitario = Convert.ToDecimal( TxBoxPrecioUnitario.Text );
-        //    ObjArticulo.stockActual= Convert.ToInt32( TxBoxStockActual.Text );
-        //    ObjArticulo.IdProveedor = Convert.ToInt32( TxBoxIdProvedor.Text );
-        //    ObjArticulo.stockMinimo = Convert.ToInt32( TxBoxStockMinimo.Text );
-
-
-        //    string strError1 = ObjArticulo.InsertarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
-
-        //}
-
-        protected void BtnActualizarArticulo_Click(object sender, EventArgs e)
+        protected void BtnBuscarID_Click(object sender, EventArgs e)
         {
             ObjSIS.Articulo ObjArticulo = new ObjSIS.Articulo();
-            ObjArticulo.i = Convert.ToInt32(aaas.Text);
-            string strError1 = ObjArticulo.InsertarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            ObjArticulo.IDBusqueda = Convert.ToInt32(TxBoxBuscarID.Text);
+            string strError1 = ObjArticulo.VerificarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
 
         }
     }

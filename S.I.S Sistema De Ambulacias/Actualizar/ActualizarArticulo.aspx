@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarArticulo.aspx.cs" Inherits="S.I.S_Sistema_De_Ambulacias.Reportes.RegistroArticulo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarArticulo.aspx.cs" Inherits="S.I.S_Sistema_De_Ambulacias.Actualizar.ActualizarArticulo" %>
 
 <!DOCTYPE html>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -58,24 +57,24 @@
                         </div>
                         <%--___________--%>
                         <%--______Actualizar_____--%>
-                        <div class="sb-sidenav-menu-heading">Registros</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-sidenav-menu-heading fw-bolder text-center h1">Modificar</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsActualizar" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-redo-alt"></i></div>
                             Actualizar
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseLayoutsActualizar" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="ActualizarProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="ActualizarArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="ActualizarChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="ActualizarDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="ActualizarCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="ActualizarDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="ActualizarClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="ActualizarMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="ActualizarTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="ActualizarArticuloTransporte.aspx">Articulo Transporte</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarProvedor.aspx">Provedores</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarArticulo.aspx">Articulo</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarChofer.aspx">Chofer</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarCliente.aspx">Cliente</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarDireccion.aspx">Direccion</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarTraslado.aspx">Traslado</a>
+                                <a class="nav-link" href="../Actualizar/ActualizarArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
@@ -156,24 +155,26 @@
                     </div>
                     <div class="container-fluid p-4">
                         <div class="d-block w100">
-
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="text-center mb-4">Actualizar de Articulo</h2>
+                                </div>
+                            </div>
                             <div class="row mb-2">
-
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxSitioWeb" class="form-label text-dark ">Sitio Web</label>
+                                        <label for="TxBoxEstatus" class="form-label text-dark ">ID </label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="aaas" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="TxBoxBuscarID" runat="server" CssClass="form-control" OnTextChanged="TxBoxBuscarID_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
-
                             <div class="d-flex justify-content-end">
-                                <asp:Button ID="BtnActualizarArticulo" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="BtnActualizarArticulo_Click" />
+                                <asp:Button ID="BtnBuscarID" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="BtnBuscarID_Click" />
                             </div>
-
                         </div>
+
                     </div>
                     <!-- !_______________________________________________________________________ -->
 
@@ -202,4 +203,3 @@
     <script src="../js/datatables-simple-demo.js"></script>
 </body>
 </html>
-

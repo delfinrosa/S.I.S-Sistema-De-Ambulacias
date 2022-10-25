@@ -7,29 +7,29 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace S.I.S_Sistema_De_Ambulacias.Reportes
+namespace S.I.S_Sistema_De_Ambulacias.Actualizar
 {
 
 
-    public partial class RegistroArticulo
+    public partial class ActualizarArticulo
     {
 
         /// <summary>
-        /// Control aaas.
+        /// Control TxBoxBuscarID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox aaas;
+        protected global::System.Web.UI.WebControls.TextBox TxBoxBuscarID;
 
         /// <summary>
-        /// Control BtnActualizarArticulo.
+        /// Control BtnBuscarID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnActualizarArticulo;
+        protected global::System.Web.UI.WebControls.Button BtnBuscarID;
     }
 }
