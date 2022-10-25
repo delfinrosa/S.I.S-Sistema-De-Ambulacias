@@ -8,10 +8,9 @@
     <title>SIS</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
+     <link href="css/main.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/estiloSIS.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
@@ -32,110 +31,58 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        
+                <div class="sb-sidenav-menu m-1 ">
+                    <div class="nav m-1">
+
                         <%--______Registros_____--%>
-                        <div class="sb-sidenav-menu-heading fw-bolder text-center h1">Registros</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-sidenav-menu-heading bordeaa  m--5 ">Registros</div>
+                        <a class="nav-link collapsed " href="#" data-bs-toggle="collapse" data-bs-target="#collapseNAV" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon "><i class="fas fa-columns"></i></div>
                             Registrar
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                <div class="sb-sidenav-collapse-arrow "><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/Registro/RegistroProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="/Registro/RegistroArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="/Registro/RegistroChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="/Registro/RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="/Registro/RegistroCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="/Registro/RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="/Registro/RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="/Registro/RegistroMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="/Registro/RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="/Registro/RegistroArticuloTransporte.aspx">Articulo Transporte</a>
+
+                        <div class="collapse mb-2" id="collapseNAV" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav m-3 ">
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroProvedor.aspx">Provedores</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroArticulo.aspx">Articulo</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroChofer.aspx">Chofer</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroCliente.aspx">Cliente</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroDireccion.aspx">Direccion</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroTraslado.aspx">Traslado</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
-                        <hr />
-                        <%--______Actualizar_____--%>
-                        <div class="sb-sidenav-menu-heading fw-bolder text-center h1">Modificar</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsActualizar" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-redo-alt"></i></div>
-                            Actualizar
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+           
+                                                <%--______Registros_____--%>
+                        <div class="sb-sidenav-menu-heading mt-5 m--5">Registros</div>
+                        <a class="nav-link collapsed " href="#" data-bs-toggle="collapse" data-bs-target="#collapseNAV" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon "><i class="fas fa-columns"></i></div>
+                            Registrar
+                                <div class="sb-sidenav-collapse-arrow "><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayoutsActualizar" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/Actualizar/ActualizarProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="/Actualizar/ActualizarArticuloTransporte.aspx">Articulo Transporte</a>
+
+                        <div class="collapse " id="collapseNAV" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav m-3 ">
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroProvedor.aspx">Provedores</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroArticulo.aspx">Articulo</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroChofer.aspx">Chofer</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroCliente.aspx">Cliente</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroDireccion.aspx">Direccion</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroTraslado.aspx">Traslado</a>
+                                <a class="nav-link p-2 my-2 d-flex" href="/Registro/RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
-                        <hr />
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-redo-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="inicio.aspx">Static Navigation</a>
-                                <a class="nav-link" href="inicio.aspx">Light Sidenav</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="inicio.aspx" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="inicio.aspx">Login</a>
-                                        <a class="nav-link" href="inicio.aspx">Register</a>
-                                        <a class="nav-link" href="inicio.aspx">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="inicio.aspx">401 Page</a>
-                                        <a class="nav-link" href="inicio.aspx">404 Page</a>
-                                        <a class="nav-link" href="inicio.aspx">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+           
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

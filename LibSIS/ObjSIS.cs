@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace LibSIS
 {
     public class ObjSIS
@@ -35,9 +35,12 @@ namespace LibSIS
                     return strError;
                 }
             }
+
+
         }
         public class Proveedor
         {
+            public int IDProvedor;
             public string razonSocial;
             public string Telefono;
             public string email;
@@ -51,6 +54,43 @@ namespace LibSIS
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public DataTable VerificarProveedor(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Proveedor]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarProveedor(string strconexion)
+            {
+                string striSQL = $"DELETE [dbo].[Proveedor] WHERE ID = {IDProvedor}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarProveedor(string strconexion)
+            {
+                string striSQL = $"UPDATE [dbo].[Proveedor] SET [razonSocial] = '{razonSocial}' ,[Telefono] = '{Telefono}',[email] = '{email}' ,[sitioWeb] = '{sitioWeb}'" +
+                    $" WHERE [ID] = {IDProvedor}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
