@@ -15,6 +15,15 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
     {
 
         /// <summary>
+        /// Control datatablesSimple.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView datatablesSimple;
+
+        /// <summary>
         /// Control TxBoxNombre.
         /// </summary>
         /// <remarks>

@@ -15,15 +15,64 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         }
 
+        private void cargar()
+        {
+            datatablesSimple.DataSource = ObjCliente.VerificarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            datatablesSimple.DataBind();
+        }
+             ObjSIS.Cliente ObjCliente= new ObjSIS.Cliente();       
         protected void BtnInsertarCliente_Click(object sender, EventArgs e)
         {
-            ObjSIS.Cliente ObjCliente= new ObjSIS.Cliente();
+
             ObjCliente.Nombre = TxBoxNombre.Text;
             ObjCliente.ApellidoPaterno = TxBoxApellidoPaterno.Text;
             ObjCliente.ApellidoMaterno = TxBoxApellidoMaterno.Text;
             ObjCliente.Telefono = TxBoxTelefono.Text;
             string strError1 = ObjCliente.InsertarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            cargar();
 
+        }
+
+        protected void datatablesSimple_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                cargar();
+            }
+        }
+
+        protected void datatablesSimple_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            datatablesSimple.EditIndex = -1;
+            cargar();
+        }
+
+        protected void datatablesSimple_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            ObjCliente.IDCliente = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
+            ObjCliente.EliminarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            cargar();
+        }
+
+        protected void datatablesSimple_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            datatablesSimple.EditIndex = e.NewEditIndex;
+            cargar();
+        }
+
+        protected void datatablesSimple_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
+            ObjCliente.IDCliente = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
+            ObjCliente.Nombre = (fila.FindControl("txtNombre") as TextBox).Text;
+            ObjCliente.ApellidoPaterno = (fila.FindControl("txtApellidoPaterno") as TextBox).Text;
+            ObjCliente.ApellidoMaterno = (fila.FindControl("txtApellidoMaterno") as TextBox).Text;
+            ObjCliente.Telefono = (fila.FindControl("txtTelefono") as TextBox).Text;
+
+            //ACTUALIZAR
+            ObjCliente.ActualizarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            datatablesSimple.EditIndex = -1;
+            cargar();
         }
     }
 }

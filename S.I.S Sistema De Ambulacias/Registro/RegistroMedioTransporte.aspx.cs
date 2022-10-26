@@ -21,14 +21,60 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         }
 
+            ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
         protected void BtnInsertarMedioTransporte_Click(object sender, EventArgs e)
         {
-            ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
             ObjMedioTransporte.TipoCombustible = TxBoxTipoCombustible.Text;
             ObjMedioTransporte.TipoTransporte = TxBoxTipoTransporte.Text;
             ObjMedioTransporte.idChofer = Convert.ToInt32(TxBoxIDChofer.Text);
             string strError1 = ObjMedioTransporte.InsertarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            cargar();
 
+        }
+        private void cargar()
+        {
+            datatablesSimple.DataSource = ObjMedioTransporte.VerificarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            datatablesSimple.DataBind();
+        }
+        protected void datatablesSimple_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                cargar();
+            }
+        }
+
+        protected void datatablesSimple_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            datatablesSimple.EditIndex = -1;
+            cargar();
+        }
+
+        protected void datatablesSimple_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            ObjMedioTransporte.IDMedioTransporte = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
+            ObjMedioTransporte.EliminarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            cargar();
+        }
+
+        protected void datatablesSimple_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            datatablesSimple.EditIndex = e.NewEditIndex;
+            cargar();
+        }
+
+        protected void datatablesSimple_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
+            ObjMedioTransporte.IDMedioTransporte = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
+            ObjMedioTransporte.TipoCombustible = (fila.FindControl("txtTipoCombustible") as TextBox).Text;
+            ObjMedioTransporte.TipoTransporte = (fila.FindControl("txtTipoTransporte") as TextBox).Text;
+            ObjMedioTransporte.idChofer = Convert.ToInt32((fila.FindControl("txtidChofer") as TextBox).Text);
+
+            //ACTUALIZAR
+            ObjMedioTransporte.ActualizarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            datatablesSimple.EditIndex = -1;
+            cargar();
         }
     }
 }

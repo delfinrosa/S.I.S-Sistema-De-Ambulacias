@@ -27,17 +27,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
             ObjProveedor.email = TxBoxEmail.Text;
             ObjProveedor.sitioWeb = TxBoxSitioWeb.Text;
             string strError1 = ObjProveedor.InsertarProvedor(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            cargar();
 
         }
 
-    
-        protected void seleccionar(object sender, EventArgs e)
-        {
-            GridViewRow row = datatablesSimple.SelectedRow;
-            Label1.Text = row.Cells[0].Text;
-        }
 
-      
+
+
         private void cargar(){
             datatablesSimple.DataSource = ObjProveedor.VerificarProveedor(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             datatablesSimple.DataBind();        

@@ -16,12 +16,11 @@ namespace LibSIS
             public int IdProveedor;
             public int stockMinimo;
 
-            public int IDBusqueda;
+            public int IDArticulo;
 
             public string InsertarArticulo(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Articulo] ([Descripcion],[precioUnitario],[stockActual] ,[IdProveedor] ,[stockMinimo] ) " +
-                    $"VALUES ('{Descripcion}', {precioUnitario}, {stockActual},{IdProveedor},{stockMinimo})";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarArticulo] '{Descripcion}', {precioUnitario}, {stockActual},{IdProveedor},{stockMinimo}";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -35,7 +34,42 @@ namespace LibSIS
                     return strError;
                 }
             }
-
+            public DataTable VerificarArticulo(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Articulo]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarArticulo(string strconexion)
+            {
+                string striSQL = $"DELETE [dbo].[sp_EliminarArticulo]  {IDArticulo}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarArticulo(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarArticulo] {IDArticulo} , '{Descripcion}' , '{precioUnitario}','{stockActual}' ,'{IdProveedor}','{stockMinimo}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
 
         }
         public class Proveedor
@@ -48,8 +82,7 @@ namespace LibSIS
 
             public string InsertarProvedor(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Proveedor]([razonSocial],[Telefono],[email],[sitioWeb])" +
-                    $"VALUES( '{razonSocial}', '{Telefono}', '{email}', '{sitioWeb}')";
+                string striSQL = $"EXECUTE [sp_AgregarProveedor] '{razonSocial}' , '{Telefono}' , '{email}' , '{sitioWeb}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -71,7 +104,7 @@ namespace LibSIS
             }
             public string EliminarProveedor(string strconexion)
             {
-                string striSQL = $"DELETE [dbo].[Proveedor] WHERE ID = {IDProvedor}";
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarProveedor]  {IDProvedor}";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -86,8 +119,7 @@ namespace LibSIS
             }
             public string ActualizarProveedor(string strconexion)
             {
-                string striSQL = $"UPDATE [dbo].[Proveedor] SET [razonSocial] = '{razonSocial}' ,[Telefono] = '{Telefono}',[email] = '{email}' ,[sitioWeb] = '{sitioWeb}'" +
-                    $" WHERE [ID] = {IDProvedor}";
+                string striSQL = $"EXECUTE [dbo].[sp_EditarProveedor] {IDProvedor} , '{razonSocial}' , '{Telefono}','{email}' ,'{sitioWeb}'";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -107,15 +139,50 @@ namespace LibSIS
             public string Apellido;
             public string RFC;
             public decimal Salario;
-
+            public int IDChofer;
             public string InsertarChofer(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Chofer] ([Nombre],[Apellido],[RFC],[Salario])" +
-                    $"VALUES( '{Nombre}', '{Apellido}', '{RFC}', '{Salario}')";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarChofer] '{Nombre}', '{Apellido}', '{RFC}', '{Salario}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public DataTable VerificarChofer(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Chofer]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarChofer(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarChofer]  {IDChofer}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarChofer(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarChofer] {IDChofer} , '{Nombre}' , '{Apellido}','{RFC}' ,'{Salario}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
@@ -132,15 +199,52 @@ namespace LibSIS
             public int IDMedioTransporte;
             public string Fecha;
             public string Descripcion;
+            public int IDDesperfectoMecanico;
 
             public string InsertarDesperfectoMecanico(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[DesperfectoMecanico] ([IDMedioTransporte],[Fecha],[Descripcion])" +
-                    $"VALUES( '{IDMedioTransporte}', '{Fecha}', '{Descripcion}')";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarDesperfectoMecanico] '{IDMedioTransporte}', '{Fecha}', '{Descripcion}'";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+
+            public DataTable VerificarDesperfectoMecanico(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[DesperfectoMecanico]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarDesperfectoMecanico(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarDesperfectoMecanico]  {IDDesperfectoMecanico}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarDesperfectoMecanico(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarDesperfectoMecanico] {IDDesperfectoMecanico} , '{IDMedioTransporte}' , '{Fecha}','{Descripcion}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
@@ -159,15 +263,50 @@ namespace LibSIS
             public string ApellidoPaterno;
             public string ApellidoMaterno;
             public string Telefono;
-
+            public int IDCliente;
             public string InsertarCliente(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Cliente] ([Nombre],[ApellidoPaterno],[ApellidoMaterno],[Telefono])" +
-                    $"VALUES( '{Nombre}', '{ApellidoPaterno}' , '{ApellidoMaterno}', '{Telefono}')";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarCliente]  '{Nombre}', '{ApellidoPaterno}' , '{ApellidoMaterno}', '{Telefono}'";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public DataTable VerificarCliente(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Cliente]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarCliente(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarCliente]  {IDCliente}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarCliente(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarCliente] {IDCliente} , '{Nombre}' , '{ApellidoPaterno}','{ApellidoMaterno}' ,'{Telefono}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
@@ -182,18 +321,54 @@ namespace LibSIS
 
         public class Direcciones
         {
-
+            public int IDDireccion;
             public string Direccion;
             public string CodigoPostal;
 
             public string InsertarDireccion(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Direcciones] ([Direccion],[CodigoPostal])" +
-                    $"VALUES( '{Direccion}', '{CodigoPostal}' )";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarDireccion] '{Direccion}', '{CodigoPostal}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+
+            public DataTable VerificarDirecciones(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Direcciones]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarDirecciones(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarDireccion]  {IDDireccion}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarDireccion(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarDireccion] {IDDireccion} , '{Direccion}' , '{CodigoPostal}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
@@ -211,11 +386,10 @@ namespace LibSIS
 
             public int idCliente;
             public int idDireccion;
-            public int ID;
+            public int IDClienteDirecciones;
             public string InsertarClienteDirecciones(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[ClienteDirecciones] ([ID],[idCliente],[idDireccion])" +
-                    $"VALUES( {ID},{idCliente}, {idDireccion} )";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarDireccion] {IDClienteDirecciones},{idCliente}, {idDireccion} ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -229,22 +403,94 @@ namespace LibSIS
                     return strError;
                 }
             }
+            public DataTable VerificarClienteDirecciones(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[ClienteDirecciones]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarClienteDirecciones(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarDireccion]  {IDClienteDirecciones}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarClienteDirecciones(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarDireccion] {IDClienteDirecciones} , '{idCliente}' , '{idDireccion}' ";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
         }
 
         public class MedioTransporte
         {
-
+            public int IDMedioTransporte;
             public string TipoCombustible;
             public string TipoTransporte;
             public int idChofer;
             public string InsertarMedioTransporte(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[MedioTransporte] ([TipoCombustible],[TipoTransporte],[idChofer])" +
-                    $"VALUES( '{TipoCombustible}' , '{TipoTransporte}' , '{idChofer}' )";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarMedioTransporte]  '{TipoCombustible}' , '{TipoTransporte}' , '{idChofer}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+
+            public DataTable VerificarMedioTransporte(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[MedioTransporte]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarMedioTransporte(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarMedioTransporte]  {IDMedioTransporte}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarMedioTransporte(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarMedioTransporte] {IDMedioTransporte} , '{TipoCombustible}' , '{TipoTransporte}' , '{idChofer}'";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";
@@ -266,14 +512,51 @@ namespace LibSIS
             public int idMedioTransporte;
             public int idClienteDireccion;
             public int Estatus;
+            public int IDTraslado;
             public string InsertarTraslado(string strconexion)
             {
-                string striSQL = $"INSERT INTO [dbo].[Traslado] ([FechaProgramada],[FechaRealizado] ,[Costo],[idMedioTransporte],[idClienteDireccion],[Estatus] )" +
-                    $"VALUES( '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' )";
+                string striSQL = $"EXECUTE [dbo].[sp_AgregarTraslado] '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
 
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+
+            public DataTable VerificarTraslado(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[Traslado]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public string EliminarTraslado(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EliminarTraslado]  {IDTraslado}";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+            public string ActualizarTraslado(string strconexion)
+            {
+                string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
                 if (strError == "")
                 {
                     return "";

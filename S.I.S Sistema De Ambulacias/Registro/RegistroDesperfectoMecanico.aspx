@@ -31,11 +31,12 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
+                                 <div class="sb-sidenav-menu" >
                     <div class="nav">
 
+
                         <%--______Registros_____--%>
-                        <div class="sb-sidenav-menu-heading">Registros</div>
+                        <div class="sb-sidenav-menu-heading m--5">Registros</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Registrar
@@ -43,78 +44,21 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="RegistroProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="RegistroArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="RegistroChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="RegistroCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
+                                <a class="nav-link py-3" href="RegistroProvedor.aspx">Provedores</a>
+                                <a class="nav-link py-3" href="RegistroArticulo.aspx">Articulo</a>
+                                <a class="nav-link py-3" href="RegistroChofer.aspx">Chofer</a>
+                                <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
+                                <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
+                                <a class="nav-link py-3" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
+                                <a class="nav-link py-3" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
 
 
-
-
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../inicio.aspx">Static Navigation</a>
-                                <a class="nav-link" href="../inicio.aspx">Light Sidenav</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../inicio.aspx">Login</a>
-                                        <a class="nav-link" href="../inicio.aspx">Register</a>
-                                        <a class="nav-link" href="../inicio.aspx">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../inicio.aspx">401 Page</a>
-                                        <a class="nav-link" href="../inicio.aspx">404 Page</a>
-                                        <a class="nav-link" href="../inicio.aspx">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -132,6 +76,63 @@
                     <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Desperfecto Mecanico</h1>
                     </div>
+
+                    
+
+                    <div class="card mb-4">
+                        <div class="card-header ">
+                            <i class="fas fa-table me-1"></i>
+                            Desperfecto Mecanico
+                        <div class="card-body card-title">
+                            &nbsp;<asp:GridView DataKeyNames="ID" ID="datatablesSimple" runat="server" OnLoad="datatablesSimple_Load" AutoGenerateColumns="false" OnRowCancelingEdit="datatablesSimple_RowCancelingEdit" OnRowDeleting="datatablesSimple_RowDeleting" OnRowEditing="datatablesSimple_RowEditing" OnRowUpdating="datatablesSimple_RowUpdating">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="ID">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="ID Medio Transporte">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelIDMedioTransporte" runat="server" Text='<%#Bind("IDMedioTransporte")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtIDMedioTransporte" runat="server" Text='<%#Bind("IDMedioTransporte")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Fecha">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
+                                    
+                                    <asp:TemplateField HeaderText="Descripcion">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelDescripcion" runat="server" Text='<%#Bind("Descripcion")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtDescripcion" runat="server" Text='<%#Bind("Descripcion")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+
+                                <Columns>
+                                    <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                        </div>
+                    </div>
+
                     <div class="container-fluid p-4">
                         <div class="d-block w100">
                             <div class="row">

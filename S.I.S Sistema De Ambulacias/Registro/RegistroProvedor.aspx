@@ -32,12 +32,12 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
+                                    <div class="sb-sidenav-menu" >
                     <div class="nav">
 
 
                         <%--______Registros_____--%>
-                        <div class="sb-sidenav-menu-heading">Registros</div>
+                        <div class="sb-sidenav-menu-heading m--5">Registros</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Registrar
@@ -45,78 +45,21 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="RegistroProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="RegistroArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="RegistroChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="RegistroCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
+                                <a class="nav-link py-3" href="RegistroProvedor.aspx">Provedores</a>
+                                <a class="nav-link py-3" href="RegistroArticulo.aspx">Articulo</a>
+                                <a class="nav-link py-3" href="RegistroChofer.aspx">Chofer</a>
+                                <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
+                                <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
+                                <a class="nav-link py-3" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
+                                <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
+                                <a class="nav-link py-3" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
 
 
-
-
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../inicio.aspx">Static Navigation</a>
-                                <a class="nav-link" href="../inicio.aspx">Light Sidenav</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="../inicio.aspx" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../inicio.aspx">Login</a>
-                                        <a class="nav-link" href="../inicio.aspx">Register</a>
-                                        <a class="nav-link" href="../inicio.aspx">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../inicio.aspx">401 Page</a>
-                                        <a class="nav-link" href="../inicio.aspx">404 Page</a>
-                                        <a class="nav-link" href="../inicio.aspx">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="../inicio.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -147,7 +90,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtID" runat="server" Text='<%#Bind("ID")%>' CssClass="w-auto"></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -156,7 +99,7 @@
                                             <asp:Label ID="LabelrazonSocial" runat="server" Text='<%#Bind("razonSocial")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtrazonSocial" runat="server" Text='<%#Bind("razonSocial")%>'></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtrazonSocial" runat="server" Text='<%#Bind("razonSocial")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -165,7 +108,7 @@
                                             <asp:Label ID="LabelTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -174,7 +117,7 @@
                                             <asp:Label ID="Labelemail" runat="server" Text='<%#Bind("email")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtemail" runat="server" Text='<%#Bind("email")%>'></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtemail" runat="server" Text='<%#Bind("email")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     
@@ -183,7 +126,7 @@
                                             <asp:Label ID="LabelsitioWeb" runat="server" Text='<%#Bind("sitioWeb")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtsitioWeb" runat="server" Text='<%#Bind("sitioWeb")%>'></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control " ID="txtsitioWeb" runat="server" Text='<%#Bind("sitioWeb")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -195,16 +138,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                    </div>
                     <div class="container-fluid p-4">
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-end">
-                                <span class="my-5 fw-bolder">
-                                    <asp:CheckBox class="m-2" ID="CheckBox1" runat="server" />MODIFICAR</span>
-                            </div>
-                        </div>
                         <div class="d-block w100">
                             <div class="row">
                                 <div class="col-12">
