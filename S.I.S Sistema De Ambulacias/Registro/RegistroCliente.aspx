@@ -32,7 +32,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                                <div class="sb-sidenav-menu" >
+                <div class="sb-sidenav-menu">
                     <div class="nav">
 
 
@@ -58,8 +58,6 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -77,7 +75,7 @@
                     <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Cliente</h1>
                     </div>
-                    
+
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
@@ -90,7 +88,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -120,7 +118,7 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtApellidoMaterno" runat="server" Text='<%#Bind("ApellidoMaterno")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Telefono">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:Label>
@@ -129,6 +127,26 @@
                                             <asp:TextBox CssClass="w-100 form-control " ID="txtTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
+
+                                    
+                                    <asp:TemplateField HeaderText="Direccionono">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelDireccion" runat="server" Text='<%#Bind("Direccion")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control " ID="txtDireccion" runat="server" Text='<%#Bind("Direccion")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Codigo Postal">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelCodigoPostal" runat="server" Text='<%#Bind("CodigoPostal")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control " ID="txtCodigoPostal" runat="server" Text='<%#Bind("CodigoPostal")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
                                 </Columns>
 
                                 <Columns>
@@ -187,6 +205,28 @@
                                 </div>
                                 <div class="col-md-7">
                                     <asp:TextBox ID="TxBoxTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+
+                                <div class="col-auto">
+                                    <h2 class="text-end">
+                                        <label for="TxBoxDireccion" class="form-label text-dark ">Direccion</label>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <asp:TextBox ID="TxBoxDireccion" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+
+                                <div class="col-auto">
+                                    <h2 class="text-end">
+                                        <label for="TxBoxCodigoPostal" class="form-label text-dark ">Codigo Postal</label>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <asp:TextBox ID="TxBoxCodigoPostal" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">

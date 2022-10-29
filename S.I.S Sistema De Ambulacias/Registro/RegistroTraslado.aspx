@@ -57,7 +57,6 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -75,8 +74,8 @@
                     <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Traslado</h1>
                     </div>
-                    
-                    
+
+
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
@@ -89,7 +88,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -98,7 +97,8 @@
                                             <asp:Label ID="LabelFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:TextBox>
+                                            <asp:Calendar ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+                                            <%--                                            <asp:TextBox ID="txtFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -107,10 +107,12 @@
                                             <asp:Label ID="LabelFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>
+                                            <asp:Calendar ID="CalendarFechaRealizado" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+
+<%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Costo">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelCosto" runat="server" Text='<%#Bind("Costo")%>'></asp:Label>
@@ -119,7 +121,7 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtCosto" runat="server" Text='<%#Bind("Costo")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="ID Medio Transporte">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelidMedioTransporte" runat="server" Text='<%#Bind("idMedioTransporte")%>'></asp:Label>
@@ -128,7 +130,7 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtidMedioTransporte" runat="server" Text='<%#Bind("idMedioTransporte")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="ID Cliente Direccion">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelidClienteDireccion" runat="server" Text='<%#Bind("idClienteDireccion")%>'></asp:Label>
@@ -137,13 +139,16 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtidClienteDireccion" runat="server" Text='<%#Bind("idClienteDireccion")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Estatus">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:Label>
+                                            <asp:CheckBox ID="CheckBoxEstatus" runat="server" />
+                                            <%--                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:Label>--%>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:TextBox>
+                                            <asp:CheckBox ID="CheckBoxEstatus" runat="server" />
+
+                                            <%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 

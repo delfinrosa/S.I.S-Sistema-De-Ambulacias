@@ -27,12 +27,12 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         ObjSIS.Traslado ObjTraslado = new ObjSIS.Traslado();
         protected void BtnInsertarTraslado_Click(object sender, EventArgs e)
         {
-            ObjTraslado.FechaProgramada= TxBoxFechaProgramada.Text;
-            ObjTraslado.FechaRealizado = TxBoxFechaRealizado.Text;
+            //ObjTraslado.FechaProgramada= TxBoxFechaProgramada.Text;
+            //ObjTraslado.FechaRealizado = TxBoxFechaRealizado.Text;
             ObjTraslado.Costo = Convert.ToSingle(TxBoxCosto.Text);
             ObjTraslado.idMedioTransporte = Convert.ToInt32(TxBoxIDMedioTransporte.Text);
             ObjTraslado.idClienteDireccion = Convert.ToInt32(TxBoxIDClienteDireccion.Text);
-            ObjTraslado.Estatus = Convert.ToInt32(TxBoxEstatus.Text);
+            //ObjTraslado.Estatus = Convert.ToBoolean(TxBoxEstatus.Text);
             string strError1 = ObjTraslado.InsertarTraslado(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
 
 
@@ -69,12 +69,26 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
             GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
             ObjTraslado.IDTraslado = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
-            ObjTraslado.FechaProgramada= (fila.FindControl("txtFechaProgramada") as TextBox).Text;
-            ObjTraslado.FechaRealizado = (fila.FindControl("txtFechaRealizado") as TextBox).Text;
+            //ObjTraslado.FechaProgramada= (fila.FindControl("txtFechaProgramada") as TextBox).Text;
+            ObjTraslado.FechaProgramada = (fila.FindControl("CalendarFechaProgramada") as Calendar).SelectedDate;
+
+            //ObjTraslado.FechaRealizado = (fila.FindControl("txtFechaRealizado") as TextBox).Text;
+            ObjTraslado.FechaRealizado = (fila.FindControl("CalendarFechaRealizado") as Calendar).SelectedDate;
+
             ObjTraslado.Costo = Convert.ToSingle( (fila.FindControl("txtCosto") as TextBox).Text);
             ObjTraslado.idMedioTransporte =Convert.ToInt32( (fila.FindControl("txtidMedioTransporte") as TextBox).Text);
             ObjTraslado.idClienteDireccion = Convert.ToInt32((fila.FindControl("txtidClienteDireccion") as TextBox).Text);
-            ObjTraslado.Estatus = Convert.ToInt32((fila.FindControl("txtEstatus") as TextBox).Text);
+            if ((fila.FindControl("CheckBoxEstatus") as CheckBox).Checked)
+            {
+            ObjTraslado.Estatus = 1 ;
+
+            }
+            else
+            {
+                ObjTraslado.Estatus = 0;
+
+            }
+
 
             //ACTUALIZAR
             ObjTraslado.ActualizarTraslado(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);

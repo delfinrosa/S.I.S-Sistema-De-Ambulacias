@@ -32,7 +32,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu" >
+                <div class="sb-sidenav-menu">
                     <div class="nav">
 
 
@@ -58,8 +58,6 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -74,16 +72,16 @@
         <div id="layoutSidenav_content">
             <form action="" runat="server">
                 <main>
-                                        <div class="container w-100">
+                    <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Articulo</h1>
                     </div>
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
-                            Provedores
+                            Articulo
                         <div class="card-body card-title">
-                            &nbsp;<asp:GridView  ID="datatablesSimple" runat="server" 
-                                DataKeyNames="ID" 
+                            &nbsp;<asp:GridView ID="datatablesSimple" runat="server"
+                                DataKeyNames="ID"
                                 OnLoad="datatablesSimple_Load"
                                 AutoGenerateColumns="false"
                                 OnRowCancelingEdit="datatablesSimple_RowCancelingEdit"
@@ -96,7 +94,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -126,7 +124,7 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtstockActual" runat="server" Text='<%#Bind("stockActual")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Id Proveedor">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelIdProveedor" runat="server" Text='<%#Bind("IdProveedor")%>'></asp:Label>
@@ -135,7 +133,7 @@
                                             <asp:TextBox CssClass="w-100 form-control " ID="txtIdProveedor" runat="server" Text='<%#Bind("IdProveedor")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                                                        
+
                                     <asp:TemplateField HeaderText="Stock Minimo">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelstockMinimo" runat="server" Text='<%#Bind("stockMinimo")%>'></asp:Label>

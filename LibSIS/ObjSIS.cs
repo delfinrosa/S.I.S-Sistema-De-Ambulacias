@@ -282,7 +282,7 @@ namespace LibSIS
             }
             public DataTable VerificarCliente(string strconexion)
             {
-                string striSQL = $"SELECT * FROM [dbo].[Cliente]", error = "";
+                string striSQL = $"SELECT * FROM [dbo].[VWClienteDireccion]", error = "";
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
@@ -506,13 +506,14 @@ namespace LibSIS
         public class Traslado
         {
 
-            public string FechaProgramada;
-            public string FechaRealizado;
+            public DateTime FechaRealizado;
+            public DateTime FechaProgramada;
             public float Costo;
             public int idMedioTransporte;
             public int idClienteDireccion;
             public int Estatus;
             public int IDTraslado;
+
             public string InsertarTraslado(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_AgregarTraslado] '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
@@ -553,7 +554,12 @@ namespace LibSIS
             }
             public string ActualizarTraslado(string strconexion)
             {
-                string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
+                //string a = FechaProgramada.Day.ToString()+"-"+ FechaProgramada.Month.ToString() + "-" + FechaProgramada.Year.ToString() ;
+                //string b = FechaRealizado.Day.ToString() + "-" + FechaRealizado.Month.ToString() + "-" + FechaRealizado.Year.ToString() ;
+                string a = "1-16-1999";
+                string b = "1-21-2000";
+
+                string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{a}' , '{b}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);

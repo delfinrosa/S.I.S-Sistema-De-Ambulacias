@@ -20,7 +20,9 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             datatablesSimple.DataSource = ObjCliente.VerificarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             datatablesSimple.DataBind();
         }
-             ObjSIS.Cliente ObjCliente= new ObjSIS.Cliente();       
+             ObjSIS.Cliente ObjCliente= new ObjSIS.Cliente();
+        ObjSIS.Direcciones ObjDirecciones = new ObjSIS.Direcciones();
+
         protected void BtnInsertarCliente_Click(object sender, EventArgs e)
         {
 
@@ -29,6 +31,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjCliente.ApellidoMaterno = TxBoxApellidoMaterno.Text;
             ObjCliente.Telefono = TxBoxTelefono.Text;
             string strError1 = ObjCliente.InsertarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            ObjDirecciones.Direccion = TxBoxDireccion.Text;
+            ObjDirecciones.CodigoPostal = TxBoxCodigoPostal.Text;
+            string strError2 = ObjDirecciones.InsertarDireccion(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+
             cargar();
 
         }
@@ -69,7 +75,12 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjCliente.ApellidoMaterno = (fila.FindControl("txtApellidoMaterno") as TextBox).Text;
             ObjCliente.Telefono = (fila.FindControl("txtTelefono") as TextBox).Text;
 
+            ObjDirecciones.Direccion = (fila.FindControl("txtDireccion") as TextBox).Text;
+            ObjDirecciones.CodigoPostal = (fila.FindControl("txtCodigoPostal") as TextBox).Text;
+
             //ACTUALIZAR
+            ObjDirecciones.ActualizarDireccion(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+
             ObjCliente.ActualizarCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             datatablesSimple.EditIndex = -1;
             cargar();
