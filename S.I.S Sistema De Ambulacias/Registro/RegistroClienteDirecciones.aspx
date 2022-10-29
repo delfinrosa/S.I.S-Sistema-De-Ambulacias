@@ -134,17 +134,6 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxID" class="form-label text-dark ">ID</label>
-                                    </h2>
-                                </div>
-                                <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxID" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-
-                                <div class="col-auto">
-                                    <h2 class="text-end">
                                         <label for="TxBoxIDCliente" class="form-label text-dark ">ID Cliente</label>
                                     </h2>
                                 </div>

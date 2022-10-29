@@ -19,7 +19,6 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void BtnInsertarClienteDireccion_Click(object sender, EventArgs e)
         {
-            ObjClienteDireccion.IDClienteDirecciones = Convert.ToInt32(TxBoxID.Text);
             ObjClienteDireccion.idCliente = Convert.ToInt32(TxBoxIDCliente.Text) ;
             ObjClienteDireccion.idDireccion = Convert.ToInt32(TxBoxIDDireccion.Text);
             string strError1 = ObjClienteDireccion.InsertarClienteDirecciones(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);

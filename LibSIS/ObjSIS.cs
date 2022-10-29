@@ -342,6 +342,7 @@ namespace LibSIS
                 }
             }
 
+
             public DataTable VerificarDirecciones(string strconexion)
             {
                 string striSQL = $"SELECT * FROM [dbo].[Direcciones]", error = "";
@@ -390,6 +391,38 @@ namespace LibSIS
             public string InsertarClienteDirecciones(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_AgregarDireccion] {IDClienteDirecciones},{idCliente}, {idDireccion} ";
+                string strError = "";
+                int intRegistrosAfectados;
+                intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+
+                if (strError == "")
+                {
+                    return "";
+                }
+                else
+                {
+                    return strError;
+                }
+            }
+                public string InsertarULTIMAClienteDirecciones(string strconexion)
+                {
+                    string striSQL = $"insert into ClienteDirecciones values(CAST((SELECT IDENT_CURRENT('Cliente')) AS INT),CAST((SELECT IDENT_CURRENT('Direcciones')) AS INT))";
+                    string strError = "";
+                    int intRegistrosAfectados;
+                    intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
+
+                    if (strError == "")
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return strError;
+                    }
+                }
+            public string InsertarClienteConOTraDirecciones(string strconexion)
+            {
+                string striSQL = $"insert into ClienteDirecciones values({idCliente},CAST((SELECT IDENT_CURRENT('Direcciones')) AS INT))";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);

@@ -128,7 +128,16 @@
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    
+                                                                        
+                                    <asp:TemplateField HeaderText="">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelIDDIR" runat="server" Text='<%#Bind("IDDIR")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox CssClass="w-100 form-control " ID="txtIDDIR" runat="server" Text='<%#Bind("IDDIR")%>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
                                     <asp:TemplateField HeaderText="Direccionono">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelDireccion" runat="server" Text='<%#Bind("Direccion")%>'></asp:Label>

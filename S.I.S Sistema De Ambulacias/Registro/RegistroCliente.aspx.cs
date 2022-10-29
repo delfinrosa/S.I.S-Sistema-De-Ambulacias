@@ -22,6 +22,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         }
              ObjSIS.Cliente ObjCliente= new ObjSIS.Cliente();
         ObjSIS.Direcciones ObjDirecciones = new ObjSIS.Direcciones();
+        ObjSIS.ClienteDirecciones ObjClienteDirecciones = new ObjSIS.ClienteDirecciones();
 
         protected void BtnInsertarCliente_Click(object sender, EventArgs e)
         {
@@ -34,6 +35,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjDirecciones.Direccion = TxBoxDireccion.Text;
             ObjDirecciones.CodigoPostal = TxBoxCodigoPostal.Text;
             string strError2 = ObjDirecciones.InsertarDireccion(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            string strError3 = ObjClienteDirecciones.InsertarULTIMAClienteDirecciones(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
 
             cargar();
 
@@ -74,6 +76,8 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjCliente.ApellidoPaterno = (fila.FindControl("txtApellidoPaterno") as TextBox).Text;
             ObjCliente.ApellidoMaterno = (fila.FindControl("txtApellidoMaterno") as TextBox).Text;
             ObjCliente.Telefono = (fila.FindControl("txtTelefono") as TextBox).Text;
+
+            ObjDirecciones.IDDireccion = Convert.ToInt32((fila.FindControl("txtIDDIR") as TextBox).Text);
 
             ObjDirecciones.Direccion = (fila.FindControl("txtDireccion") as TextBox).Text;
             ObjDirecciones.CodigoPostal = (fila.FindControl("txtCodigoPostal") as TextBox).Text;

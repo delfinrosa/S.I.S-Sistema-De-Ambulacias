@@ -23,9 +23,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         ObjSIS.Direcciones ObjDireccion= new ObjSIS.Direcciones();
         protected void BtnInsertarDireccion_Click(object sender, EventArgs e)
         {
+            ObjSIS.ClienteDirecciones ObjClienteDirecciones = new ObjSIS.ClienteDirecciones();
+            ObjClienteDirecciones.idCliente = Convert.ToInt32(TxBoxIDliente.Text);
             ObjDireccion.Direccion = TxBoxDireccion.Text;
             ObjDireccion.CodigoPostal = TxBoxCodigoPostal.Text;
             string strError1 = ObjDireccion.InsertarDireccion(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            string strError2 = ObjClienteDirecciones.InsertarClienteConOTraDirecciones(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+
             cargar();
 
         }

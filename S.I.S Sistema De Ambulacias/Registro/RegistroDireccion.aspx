@@ -32,7 +32,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                                <div class="sb-sidenav-menu" >
+                <div class="sb-sidenav-menu">
                     <div class="nav">
 
 
@@ -58,8 +58,6 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -78,7 +76,7 @@
                         <h1 class="text-dark text-center my-5">Direccion</h1>
                     </div>
 
-                    
+
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
@@ -91,7 +89,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -152,6 +150,19 @@
                                     <asp:TextBox ID="TxBoxCodigoPostal" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
+
+                            <div class="row mb-2">
+
+                                <div class="col-auto">
+                                    <h2 class="text-end">
+                                        <label for="TxBoxIDliente" class="form-label text-dark ">ID Cliente</label>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <asp:TextBox ID="TxBoxIDliente" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
                             <div class="d-flex justify-content-end">
                                 <asp:Button ID="BtnInsertarDireccion" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="BtnInsertarDireccion_Click" />
                             </div>
