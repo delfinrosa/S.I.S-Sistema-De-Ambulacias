@@ -69,6 +69,15 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
         protected global::System.Web.UI.WebControls.TextBox TxBoxStockMinimo;
 
         /// <summary>
+        /// Control TxBoxIDTransporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxBoxIDTransporte;
+
+        /// <summary>
         /// Control BtnInsertarProvedor.
         /// </summary>
         /// <remarks>

@@ -19,7 +19,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected void BtnInsertarArticuloTransporte_Click(object sender, EventArgs e)
         {
             ObjSIS.ArticuloTransporte ObjArticuloTransporte = new ObjSIS.ArticuloTransporte();
-            ObjArticuloTransporte.idArticulo = Convert.ToInt32(TxBoxIDArticulo.Text);
+            //ObjArticuloTransporte.idArticulo = Convert.ToInt32(TxBoxIDArticulo.Text);
             ObjArticuloTransporte.idTransporte = Convert.ToInt32(TxBoxIDTransporte.Text);
             string strError1 = ObjArticuloTransporte.InsertarArticuloTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
 

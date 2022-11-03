@@ -33,13 +33,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.TextBox TxBoxIDMedioTrasporte;
 
         /// <summary>
-        /// Control TxBoxFecha.
+        /// Control CalendarInsertarFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxFecha;
+        protected global::System.Web.UI.WebControls.Calendar CalendarInsertarFecha;
 
         /// <summary>
         /// Control TxBoxDescripcion.

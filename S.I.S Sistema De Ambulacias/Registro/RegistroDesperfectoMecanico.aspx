@@ -31,7 +31,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                                 <div class="sb-sidenav-menu" >
+                <div class="sb-sidenav-menu">
                     <div class="nav">
 
 
@@ -57,8 +57,6 @@
                             </nav>
                         </div>
                         <%--___________--%>
-
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -77,7 +75,7 @@
                         <h1 class="text-dark text-center my-5">Desperfecto Mecanico</h1>
                     </div>
 
-                    
+
 
                     <div class="card mb-4">
                         <div class="card-header ">
@@ -109,11 +107,13 @@
                                             <asp:Label ID="LabelFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:TextBox>
+                                            <asp:Calendar SelectedDate='<%#Bind("Fecha")%>' ID="CalendarFecha" runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("Fecha")%>'></asp:Calendar>
+
+                                            <%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    
+
                                     <asp:TemplateField HeaderText="Descripcion">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelDescripcion" runat="server" Text='<%#Bind("Descripcion")%>'></asp:Label>
@@ -158,12 +158,13 @@
                                         <label for="TxBoxFecha" class="form-label text-dark ">Fecha</label>
                                     </h2>
                                 </div>
-                                <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxFecha" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-auto">
+                                    <asp:Calendar ID="CalendarInsertarFecha" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+
+                                    <%--                                    <asp:TextBox ID="TxBoxFecha" runat="server" CssClass="form-control"></asp:TextBox>--%>
                                 </div>
                             </div>
                             <div class="row mb-2">
-
                                 <div class="col-auto">
                                     <h2 class="text-end">
                                         <label for="TxBoxDescripcion" class="form-label text-dark ">Descripcion</label>
@@ -173,7 +174,6 @@
                                     <asp:TextBox ID="TxBoxDescripcion" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-
                             <div class="d-flex justify-content-end">
                                 <asp:Button ID="BtnInsertarDesperfectoMecanico" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="btnInsertarArticulo_Click" />
                             </div>
@@ -203,7 +203,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="../js/tabla.js"></script>
     <script src="../js/datatables-simple-demo.js"></script>
 </body>
 </html>

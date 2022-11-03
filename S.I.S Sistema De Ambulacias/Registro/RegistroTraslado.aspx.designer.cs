@@ -24,22 +24,22 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.GridView datatablesSimple;
 
         /// <summary>
-        /// Control TxBoxFechaProgramada.
+        /// Control CalendarInsertarFechaProgramada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxFechaProgramada;
+        protected global::System.Web.UI.WebControls.Calendar CalendarInsertarFechaProgramada;
 
         /// <summary>
-        /// Control TxBoxFechaRealizado.
+        /// Control CalendarInsertarFechaRealizado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxFechaRealizado;
+        protected global::System.Web.UI.WebControls.Calendar CalendarInsertarFechaRealizado;
 
         /// <summary>
         /// Control TxBoxCosto.
@@ -69,13 +69,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.TextBox TxBoxIDClienteDireccion;
 
         /// <summary>
-        /// Control TxBoxEstatus.
+        /// Control CheckBoxInsertarEstatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxEstatus;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxInsertarEstatus;
 
         /// <summary>
         /// Control BtnInsertarTraslado.

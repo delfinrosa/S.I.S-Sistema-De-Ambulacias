@@ -94,10 +94,10 @@
 
                                     <asp:TemplateField HeaderText="Fecha Programada">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:Label>
+                                            <asp:Label ID="LabelFechaProgramada"  runat="server"  Text='<%#Bind("FechaProgramada")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Calendar ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+                                            <asp:Calendar SelectedDate='<%#Bind("FechaProgramada")%>' VisibleDate='<%#Bind("FechaProgramada")%>' ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control" ></asp:Calendar>
                                             <%--                                            <asp:TextBox ID="txtFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
@@ -107,9 +107,9 @@
                                             <asp:Label ID="LabelFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Calendar ID="CalendarFechaRealizado" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+                                            <asp:Calendar SelectedDate='<%#Bind("FechaRealizado")%>' ID="CalendarFechaRealizado"  runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("FechaRealizado")%>'></asp:Calendar>
 
-<%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
+<%--                                                                                        <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -142,11 +142,10 @@
 
                                     <asp:TemplateField HeaderText="Estatus">
                                         <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBoxEstatus" runat="server" />
-                                            <%--                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:Label>--%>
+                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>' ></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:CheckBox ID="CheckBoxEstatus" runat="server" />
+                                            <asp:CheckBox CssClass="form-check " ID="CheckBoxEstatus" Checked='<%#Bind("Estatus")%>' runat="server" />
 
                                             <%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
@@ -172,11 +171,13 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxFechaProgramada" class="form-label text-dark ">Fecha Programada</label>
+                                        <label for="TxBoxFechaProgramada" class="form-label text-dark">Fecha Programada</label>
                                     </h2>
                                 </div>
-                                <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxFechaProgramada" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-auto">
+                                    <asp:Calendar ID="CalendarInsertarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+
+                                    <%--                                    <asp:TextBox ID="TxBoxFechaProgramada" runat="server" CssClass="form-control"></asp:TextBox>--%>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -186,8 +187,10 @@
                                         <label for="TxBoxFechaRealizado" class="form-label text-dark ">Fecha Realizado</label>
                                     </h2>
                                 </div>
-                                <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxFechaRealizado" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-auto">
+                                    <asp:Calendar ID="CalendarInsertarFechaRealizado" runat="server" CssClass="w-100 form-control"></asp:Calendar>
+
+                                    <%--                                    <asp:TextBox ID="TxBoxFechaRealizado" runat="server" CssClass="form-control"></asp:TextBox>--%>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -231,7 +234,9 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxEstatus" runat="server" CssClass="form-control" OnTextChanged="TxBoxEstatus_TextChanged"></asp:TextBox>
+                                    <asp:CheckBox ID="CheckBoxInsertarEstatus"  CssClass=" form-check " runat="server" />
+
+                                    <%--                                    <asp:TextBox ID="TxBoxEstatus" runat="server" CssClass="form-control" OnTextChanged="TxBoxEstatus_TextChanged"></asp:TextBox>--%>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -263,8 +268,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<%--    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>--%>
     <script src="../js/datatables-simple-demo.js"></script>
+    <script src="../js/tabla.js"></script>
+
 </body>
 </html>
 

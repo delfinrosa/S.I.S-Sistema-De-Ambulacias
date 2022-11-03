@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LibSIS;
-using System.Configuration; 
+using System.Configuration;
 
 namespace S.I.S_Sistema_De_Ambulacias.Registro
 {
@@ -23,18 +23,29 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
             datatablesSimple.DataSource = ObjTraslado.VerificarTraslado(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             datatablesSimple.DataBind();
+            
         }
         ObjSIS.Traslado ObjTraslado = new ObjSIS.Traslado();
         protected void BtnInsertarTraslado_Click(object sender, EventArgs e)
         {
-            //ObjTraslado.FechaProgramada= TxBoxFechaProgramada.Text;
-            //ObjTraslado.FechaRealizado = TxBoxFechaRealizado.Text;
+            
+            ObjTraslado.FechaProgramada = CalendarInsertarFechaProgramada.SelectedDate.ToShortDateString();
+            ObjTraslado.FechaRealizado = CalendarInsertarFechaRealizado.SelectedDate.ToShortDateString();
             ObjTraslado.Costo = Convert.ToSingle(TxBoxCosto.Text);
             ObjTraslado.idMedioTransporte = Convert.ToInt32(TxBoxIDMedioTransporte.Text);
             ObjTraslado.idClienteDireccion = Convert.ToInt32(TxBoxIDClienteDireccion.Text);
-            //ObjTraslado.Estatus = Convert.ToBoolean(TxBoxEstatus.Text);
+            //ObjTraslado.Estatus = CheckBoxInsertarEstatus.Checked;
+            //if (CheckBoxInsertarEstatus.Checked)
+            //{
+            //    ObjTraslado.Estatus = 0;
+            //}
+            //else
+            //{
+            //    ObjTraslado.Estatus = 1;
+            //}
             string strError1 = ObjTraslado.InsertarTraslado(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
 
+            cargar();
 
         }
 
@@ -43,6 +54,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             if (!IsPostBack)
             {
                 cargar();
+                
             }
         }
 
@@ -63,31 +75,20 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
             datatablesSimple.EditIndex = e.NewEditIndex;
             cargar();
+            
         }
 
         protected void datatablesSimple_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            
             GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
             ObjTraslado.IDTraslado = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
-            //ObjTraslado.FechaProgramada= (fila.FindControl("txtFechaProgramada") as TextBox).Text;
-            ObjTraslado.FechaProgramada = (fila.FindControl("CalendarFechaProgramada") as Calendar).SelectedDate;
-
-            //ObjTraslado.FechaRealizado = (fila.FindControl("txtFechaRealizado") as TextBox).Text;
-            ObjTraslado.FechaRealizado = (fila.FindControl("CalendarFechaRealizado") as Calendar).SelectedDate;
-
-            ObjTraslado.Costo = Convert.ToSingle( (fila.FindControl("txtCosto") as TextBox).Text);
-            ObjTraslado.idMedioTransporte =Convert.ToInt32( (fila.FindControl("txtidMedioTransporte") as TextBox).Text);
+            ObjTraslado.FechaProgramada = (fila.FindControl("CalendarFechaProgramada") as Calendar).SelectedDate.ToShortDateString();
+            ObjTraslado.FechaRealizado = (fila.FindControl("CalendarFechaRealizado") as Calendar).SelectedDate.ToShortDateString();
+            ObjTraslado.Costo = Convert.ToSingle((fila.FindControl("txtCosto") as TextBox).Text);
+            ObjTraslado.idMedioTransporte = Convert.ToInt32((fila.FindControl("txtidMedioTransporte") as TextBox).Text);
             ObjTraslado.idClienteDireccion = Convert.ToInt32((fila.FindControl("txtidClienteDireccion") as TextBox).Text);
-            if ((fila.FindControl("CheckBoxEstatus") as CheckBox).Checked)
-            {
-            ObjTraslado.Estatus = 1 ;
-
-            }
-            else
-            {
-                ObjTraslado.Estatus = 0;
-
-            }
+            ObjTraslado.Estatus = (fila.FindControl("CheckBoxEstatus") as CheckBox).Checked ;
 
 
             //ACTUALIZAR

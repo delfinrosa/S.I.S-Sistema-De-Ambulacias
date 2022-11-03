@@ -93,9 +93,6 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Descripcion">
@@ -142,6 +139,13 @@
                                             <asp:TextBox CssClass="w-100 form-control " ID="txtstockMinimo" runat="server" Text='<%#Bind("stockMinimo")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="ID Transporte">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelidTransporte" runat="server" Text='<%#Bind("idTransporte")%>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
                                 </Columns>
 
                                 <Columns>
@@ -213,6 +217,17 @@
                                     <asp:TextBox ID="TxBoxStockMinimo" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
+                            <div class="row mb-2">
+
+                                <div class="col-auto">
+                                    <h2 class="text-end">
+                                        <label for="TxBoxIDTransporte" class="form-label text-dark ">ID Transporte</label>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <asp:TextBox ID="TxBoxIDTransporte" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-end">
                                 <asp:Button ID="BtnInsertarProvedor" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="btnInsertarArticulo_Click" />
                             </div>
@@ -242,7 +257,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="../js/tabla.js"></script>
     <script src="../js/datatables-simple-demo.js"></script>
 </body>
 </html>

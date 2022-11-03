@@ -40,6 +40,12 @@ namespace LibSIS
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
+            public DataTable VerificarArticuloTransporte(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[VWArticulo]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
             public string EliminarArticulo(string strconexion)
             {
                 string striSQL = $"DELETE [dbo].[sp_EliminarArticulo]  {IDArticulo}";
@@ -539,12 +545,12 @@ namespace LibSIS
         public class Traslado
         {
 
-            public DateTime FechaRealizado;
-            public DateTime FechaProgramada;
+            public string FechaRealizado;
+            public string FechaProgramada;
             public float Costo;
             public int idMedioTransporte;
             public int idClienteDireccion;
-            public int Estatus;
+            public bool Estatus;
             public int IDTraslado;
 
             public string InsertarTraslado(string strconexion)
@@ -566,7 +572,7 @@ namespace LibSIS
 
             public DataTable VerificarTraslado(string strconexion)
             {
-                string striSQL = $"SELECT * FROM [dbo].[Traslado]", error = "";
+                string striSQL = $"SELECT * FROM [dbo].[VWTraslado]", error = "";
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
@@ -587,12 +593,9 @@ namespace LibSIS
             }
             public string ActualizarTraslado(string strconexion)
             {
-                //string a = FechaProgramada.Day.ToString()+"-"+ FechaProgramada.Month.ToString() + "-" + FechaProgramada.Year.ToString() ;
-                //string b = FechaRealizado.Day.ToString() + "-" + FechaRealizado.Month.ToString() + "-" + FechaRealizado.Year.ToString() ;
-                string a = "1-16-1999";
-                string b = "1-21-2000";
+                
 
-                string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{a}' , '{b}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
+                string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{FechaProgramada}' , '{FechaRealizado}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);
@@ -612,11 +615,10 @@ namespace LibSIS
         {
 
             public int idTransporte;
-            public int idArticulo;
             public string InsertarArticuloTransporte(string strconexion)
             {
                 string striSQL = $"INSERT INTO [dbo].[ArticuloTransporte] ([idTransporte],[idArticulo]  )" +
-                    $"VALUES( '{idTransporte}' , '{idArticulo}' )";
+                    $"VALUES( '{idTransporte}' , values(CAST((SELECT IDENT_CURRENT('Articulo')) AS INT) )";
                 string strError = "";
                 int intRegistrosAfectados;
                 intRegistrosAfectados = cslUtileriasBD.clsSQLServer.exeQuery(strconexion, striSQL, ref strError);

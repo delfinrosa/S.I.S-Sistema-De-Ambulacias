@@ -20,7 +20,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected void btnInsertarArticulo_Click(object sender, EventArgs e)
         {
             ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt16(TxBoxIDMedioTrasporte.Text);
-            ObjDesperfectoMecanico.Fecha = TxBoxFecha.Text;
+            ObjDesperfectoMecanico.Fecha = CalendarInsertarFecha.SelectedDate.ToShortDateString();
             ObjDesperfectoMecanico.Descripcion= TxBoxDescripcion.Text;
 
             string strError1 = ObjDesperfectoMecanico.InsertarDesperfectoMecanico(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
@@ -64,7 +64,9 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
             ObjDesperfectoMecanico.IDDesperfectoMecanico = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
             ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt32((fila.FindControl("txtIDMedioTransporte") as TextBox).Text);
-            ObjDesperfectoMecanico.Fecha = (Convert.ToDateTime((fila.FindControl("txtFecha") as TextBox).Text).Date).ToString();
+            ObjDesperfectoMecanico.Fecha = (fila.FindControl("CalendarFecha") as Calendar).SelectedDate.ToShortDateString();
+
+            //ObjDesperfectoMecanico.Fecha = (Convert.ToDateTime((fila.FindControl("txtFecha") as TextBox).Text).Date).ToString();
             ObjDesperfectoMecanico.Descripcion = (fila.FindControl("txtDescripcion") as TextBox).Text;
 
             //ACTUALIZAR

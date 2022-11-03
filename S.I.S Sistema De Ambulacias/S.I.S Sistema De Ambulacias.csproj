@@ -75,6 +75,7 @@
     <Content Include="inicio.aspx" />
     <Content Include="js\datatables-simple-demo.js" />
     <Content Include="js\scripts.js" />
+    <Content Include="js\tabla.js" />
     <Content Include="Registro\RegistroArticulo.aspx" />
     <Content Include="Registro\RegistroArticuloTransporte.aspx" />
     <Content Include="Registro\RegistroChofer.aspx" />

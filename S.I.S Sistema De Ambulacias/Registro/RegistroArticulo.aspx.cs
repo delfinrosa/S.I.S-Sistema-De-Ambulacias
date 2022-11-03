@@ -20,9 +20,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
 
         private void cargar()
         {
-            datatablesSimple.DataSource = ObjArticulo.VerificarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            datatablesSimple.DataSource = ObjArticulo.VerificarArticuloTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             datatablesSimple.DataBind();
         }
+            ObjSIS.ArticuloTransporte ObjArticuloTransporte = new ObjSIS.ArticuloTransporte();
         protected void btnInsertarArticulo_Click(object sender, EventArgs e)
         {
             ObjArticulo.Descripcion = TxBoxDescripcion.Text;
@@ -31,7 +32,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
             ObjArticulo.IdProveedor = Convert.ToInt32( TxBoxIdProvedor.Text );
             ObjArticulo.stockMinimo = Convert.ToInt32( TxBoxStockMinimo.Text );
 
+            ObjArticuloTransporte.idTransporte = Convert.ToInt32(TxBoxIDTransporte.Text);
+
             string strError1 = ObjArticulo.InsertarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            string strError2 = ObjArticuloTransporte.InsertarArticuloTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             cargar();
 
         }
