@@ -51,10 +51,8 @@
                                 <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
                                 <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
                                 <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link py-3" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
                                 <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
                                 <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link py-3" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
@@ -117,6 +115,8 @@
                                     <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" />
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnPDF" runat="server" OnClick="btnPDF_Click" Text="Generar PDF" />
+
                         </div>
                         </div>
                     </div>
@@ -192,6 +192,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-<script src="../js/tabla.js"></script>    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="../js/tabla.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 </html>

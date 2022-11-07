@@ -50,10 +50,8 @@
                                 <a class="nav-link py-3" href="Registro/RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
                                 <a class="nav-link py-3" href="Registro/RegistroCliente.aspx">Cliente</a>
                                 <a class="nav-link py-3" href="Registro/RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link py-3" href="Registro/RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
                                 <a class="nav-link py-3" href="Registro/RegistroMedioTransporte.aspx">Medio De Transporte</a>
                                 <a class="nav-link py-3" href="Registro/RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link py-3" href="Registro/RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>

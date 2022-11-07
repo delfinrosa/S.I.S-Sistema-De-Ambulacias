@@ -51,10 +51,8 @@
                                 <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
                                 <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
                                 <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link py-3" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
                                 <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
                                 <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link py-3" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
@@ -70,7 +68,7 @@
         <!-- INSERT -->
 
         <div id="layoutSidenav_content">
-            <form action="" runat="server">
+            <form id="form1" runat="server">
                 <main>
                     <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Articulo</h1>
@@ -152,6 +150,7 @@
                                     <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" />
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Generar PDF" />
                         </div>
                         </div>
                     </div>

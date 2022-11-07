@@ -32,7 +32,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                               <div class="sb-sidenav-menu" >
+                <div class="sb-sidenav-menu">
                     <div class="nav">
 
 
@@ -51,15 +51,11 @@
                                 <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
                                 <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
                                 <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link py-3" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
                                 <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
                                 <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link py-3" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
                             </nav>
                         </div>
                         <%--___________--%>
-
-
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -77,7 +73,7 @@
                     <div class="container w-100">
                         <h1 class="text-dark text-center my-5">Chofer</h1>
                     </div>
-                    
+
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
@@ -90,7 +86,7 @@
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>' ></asp:TextBox>
+                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -120,7 +116,7 @@
                                             <asp:TextBox CssClass="w-100 form-control" ID="txtRFC" runat="server" Text='<%#Bind("RFC")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Salario">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelSalario" runat="server" Text='<%#Bind("Salario")%>'></asp:Label>
@@ -135,6 +131,8 @@
                                     <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" />
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnPDF" runat="server" OnClick="btnPDF_Click" Text="Generar PDF" />
+
                         </div>
                         </div>
                     </div>
@@ -190,7 +188,7 @@
                                     <asp:TextBox ID="TxBoxIdSalario" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-                   
+
                             <div class="d-flex justify-content-end">
                                 <asp:Button ID="BtnInsertarProvedor" runat="server" Text="Registrar" Style="color: #fff;" class=" btn border-dark border-2 w-50 bg-dark " OnClick="btnInsertarArticulo_Click" />
                             </div>
@@ -220,6 +218,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-<script src="../js/tabla.js"></script>    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="../js/tabla.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 </html>

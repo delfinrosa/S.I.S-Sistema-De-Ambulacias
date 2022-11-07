@@ -44,16 +44,14 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="RegistroProvedor.aspx">Provedores</a>
-                                <a class="nav-link" href="RegistroArticulo.aspx">Articulo</a>
-                                <a class="nav-link" href="RegistroChofer.aspx">Chofer</a>
-                                <a class="nav-link" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
-                                <a class="nav-link" href="RegistroCliente.aspx">Cliente</a>
-                                <a class="nav-link" href="RegistroDireccion.aspx">Direccion</a>
-                                <a class="nav-link" href="RegistroClienteDirecciones.aspx">Cliente Direcciones</a>
-                                <a class="nav-link" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
-                                <a class="nav-link" href="RegistroTraslado.aspx">Traslado</a>
-                                <a class="nav-link" href="RegistroArticuloTransporte.aspx">Articulo Transporte</a>
+                                <a class="nav-link py-3" href="RegistroProvedor.aspx">Provedores</a>
+                                <a class="nav-link py-3" href="RegistroArticulo.aspx">Articulo</a>
+                                <a class="nav-link py-3" href="RegistroChofer.aspx">Chofer</a>
+                                <a class="nav-link py-3" href="RegistroDesperfectoMecanico.aspx">Desperfecto Mecanico</a>
+                                <a class="nav-link py-3" href="RegistroCliente.aspx">Cliente</a>
+                                <a class="nav-link py-3" href="RegistroDireccion.aspx">Direccion</a>
+                                <a class="nav-link py-3" href="RegistroMedioTransporte.aspx">Medio De Transporte</a>
+                                <a class="nav-link py-3" href="RegistroTraslado.aspx">Traslado</a>
                             </nav>
                         </div>
                         <%--___________--%>
@@ -94,10 +92,10 @@
 
                                     <asp:TemplateField HeaderText="Fecha Programada">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelFechaProgramada"  runat="server"  Text='<%#Bind("FechaProgramada")%>'></asp:Label>
+                                            <asp:Label ID="LabelFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Calendar SelectedDate='<%#Bind("FechaProgramada")%>' VisibleDate='<%#Bind("FechaProgramada")%>' ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control" ></asp:Calendar>
+                                            <asp:Calendar SelectedDate='<%#Bind("FechaProgramada")%>' VisibleDate='<%#Bind("FechaProgramada")%>' ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
                                             <%--                                            <asp:TextBox ID="txtFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
@@ -107,9 +105,9 @@
                                             <asp:Label ID="LabelFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Calendar SelectedDate='<%#Bind("FechaRealizado")%>' ID="CalendarFechaRealizado"  runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("FechaRealizado")%>'></asp:Calendar>
+                                            <asp:Calendar SelectedDate='<%#Bind("FechaRealizado")%>' ID="CalendarFechaRealizado" runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("FechaRealizado")%>'></asp:Calendar>
 
-<%--                                                                                        <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
+                                            <%--                                                                                        <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -142,7 +140,7 @@
 
                                     <asp:TemplateField HeaderText="Estatus">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>' ></asp:Label>
+                                            <asp:Label ID="LabelEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:CheckBox CssClass="form-check " ID="CheckBoxEstatus" Checked='<%#Bind("Estatus")%>' runat="server" />
@@ -157,6 +155,8 @@
                                     <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" />
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnPDF" runat="server" OnClick="btnPDF_Click" Text="Generar PDF" />
+
                         </div>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:CheckBox ID="CheckBoxInsertarEstatus"  CssClass=" form-check " runat="server" />
+                                    <asp:CheckBox ID="CheckBoxInsertarEstatus" CssClass=" form-check " runat="server" />
 
                                     <%--                                    <asp:TextBox ID="TxBoxEstatus" runat="server" CssClass="form-control" OnTextChanged="TxBoxEstatus_TextChanged"></asp:TextBox>--%>
                                 </div>
@@ -268,7 +268,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-<%--    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>--%>
+    <%--    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>--%>
     <script src="../js/datatables-simple-demo.js"></script>
     <script src="../js/tabla.js"></script>
 

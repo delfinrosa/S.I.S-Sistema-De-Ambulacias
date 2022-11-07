@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using LibSIS;
 using System.Configuration;
 using System.Data;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 namespace S.I.S_Sistema_De_Ambulacias.Reportes
 {
     public partial class ReportesProvedor : System.Web.UI.Page
@@ -79,6 +81,56 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
             cargar();
         }
 
+        protected void btnPDF_Click(object sender, EventArgs e)
+        {
 
+            DataTable dt = new DataTable();
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
+            dt = ObjProveedor.VerificarProveedor(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            if (dt.Rows.Count > 0)
+            {
+                document.Open();
+                Font fontTitle = FontFactory.GetFont(FontFactory.TIMES, 25);
+                Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
+
+                PdfPTable table = new PdfPTable(dt.Columns.Count);
+
+
+
+
+                document.Add(new Paragraph(20, "Reporte Medio Transporte", fontTitle) { Alignment = Element.ALIGN_CENTER });
+
+                document.Add(new Chunk("\n"));
+
+                float[] widths = new float[dt.Columns.Count];
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    widths[i] = 4f;
+                }
+                table.SetWidths(widths);
+                table.WidthPercentage = 90;
+                PdfPCell cell = new PdfPCell(new Phrase("columns"));
+                cell.Colspan = dt.Columns.Count;
+                foreach (DataRow i in dt.Rows)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int j = 0; j < dt.Columns.Count; j++)
+                        {
+                            table.AddCell(new Phrase(i[j].ToString(), font9));
+                        }
+                    }
+                    document.Add(table);
+                }
+                document.Close();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment;filename=ReporteArticulos" + ".pdf");
+                HttpContext.Current.Response.Write(document);
+                Response.Flush();
+                Response.End();
+
+            }
+        }
     }
 }
