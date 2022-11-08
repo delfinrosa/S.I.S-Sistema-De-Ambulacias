@@ -118,6 +118,8 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
                 table.WidthPercentage = 90;
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
+                DataRow a = new DataRow["texto", "otro texto"];
+                table.AddCell(new Phrase(a, font9)) ;
                 foreach (DataRow i in dt.Rows)
                 {
                     if (dt.Rows.Count > 0)

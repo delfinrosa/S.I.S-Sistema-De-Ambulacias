@@ -96,10 +96,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
 
-
-
-
-                document.Add(new Paragraph(20, "Reporte Medio Transporte", fontTitle) { Alignment = Element.ALIGN_CENTER });
+                document.Add(new Paragraph(20, "Reporte Provedor", fontTitle) { Alignment = Element.ALIGN_CENTER });
 
                 document.Add(new Chunk("\n"));
 
@@ -125,7 +122,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
                 }
                 document.Close();
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=ReporteArticulos" + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=ReporteProvedor" + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();

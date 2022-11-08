@@ -117,7 +117,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
 
 
-                document.Add(new Paragraph(20, "Reporte Medio Transporte", fontTitle) { Alignment = Element.ALIGN_CENTER });
+                document.Add(new Paragraph(20, "Reporte Traslados", fontTitle) { Alignment = Element.ALIGN_CENTER });
 
                 document.Add(new Chunk("\n"));
 
@@ -143,7 +143,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 }
                 document.Close();
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=ReporteArticulos" + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=ReporteTraslados" + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();

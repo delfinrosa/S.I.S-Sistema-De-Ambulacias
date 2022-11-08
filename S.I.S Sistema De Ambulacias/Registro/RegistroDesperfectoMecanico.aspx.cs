@@ -121,7 +121,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 }
                 document.Close();
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=ReporteArticulos" + ".pdf");
+                Response.AddHeader("content-disposition", "attachment;filename=ReporteDesperfectoMecanico" + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();
