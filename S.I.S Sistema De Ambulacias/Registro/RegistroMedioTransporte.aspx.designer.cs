@@ -51,13 +51,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.TextBox TxBoxTipoTransporte;
 
         /// <summary>
-        /// Control TxBoxIDChofer.
+        /// Control DropInsertChofer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIDChofer;
+        protected global::System.Web.UI.WebControls.DropDownList DropInsertChofer;
 
         /// <summary>
         /// Control BtnInsertarMedioTransporte.

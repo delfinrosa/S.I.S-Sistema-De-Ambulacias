@@ -22,13 +22,19 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
 
         }
-
-            ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
+        string Chofer;
+        ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
+        ObjSIS.Chofer ObjChofer = new ObjSIS.Chofer();
         protected void BtnInsertarMedioTransporte_Click(object sender, EventArgs e)
         {
             ObjMedioTransporte.TipoCombustible = TxBoxTipoCombustible.Text;
             ObjMedioTransporte.TipoTransporte = TxBoxTipoTransporte.Text;
-            ObjMedioTransporte.idChofer = Convert.ToInt32(TxBoxIDChofer.Text);
+
+
+            ObjChofer.Nombre = DropInsertChofer.SelectedItem.ToString();
+            DataTable idchofer = ObjChofer.VerificaridNombreChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            ObjMedioTransporte.idChofer = Convert.ToInt32(idchofer.Rows[0][0].ToString());
+
             string strError1 = ObjMedioTransporte.InsertarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             cargar();
 
@@ -61,6 +67,8 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void datatablesSimple_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            GridViewRow fila = datatablesSimple.Rows[e.NewEditIndex];
+            Chofer = (fila.FindControl("LabelChofer") as Label).Text;
             datatablesSimple.EditIndex = e.NewEditIndex;
             cargar();
         }
@@ -71,7 +79,12 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjMedioTransporte.IDMedioTransporte = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
             ObjMedioTransporte.TipoCombustible = (fila.FindControl("txtTipoCombustible") as TextBox).Text;
             ObjMedioTransporte.TipoTransporte = (fila.FindControl("txtTipoTransporte") as TextBox).Text;
-            ObjMedioTransporte.idChofer = Convert.ToInt32((fila.FindControl("txtidChofer") as TextBox).Text);
+
+            ObjChofer.Nombre = (fila.FindControl("DropDownChoferTABLA") as DropDownList).SelectedValue.ToString();
+            DataTable idChofer = ObjChofer.VerificaridNombreChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+
+            ObjMedioTransporte.idChofer = Convert.ToInt32(idChofer.Rows[0][0].ToString());
+
 
             //ACTUALIZAR
             ObjMedioTransporte.ActualizarMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
@@ -93,9 +106,6 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
-
-
-
 
                 document.Add(new Paragraph(20, "Reporte Medio Transporte", fontTitle) { Alignment = Element.ALIGN_CENTER });
 
@@ -128,6 +138,29 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 Response.Flush();
                 Response.End();
 
+            }
+        }
+
+        protected void DropDownChoferTABLA_Load(object sender, EventArgs e)
+        {
+            if (Chofer != "" && Chofer != null)
+            {
+                ObjSIS.Chofer ObjChofer = new ObjSIS.Chofer();
+                DropDownList dropDownList = (DropDownList)sender;
+                dropDownList.DataSource = ObjChofer.VerificarNombreChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                dropDownList.DataTextField = "Nombre";
+                dropDownList.SelectedValue = Chofer;
+            }
+        }
+
+        protected void DropInsertChofer_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ObjSIS.Chofer ObjChofer = new ObjSIS.Chofer();
+                DropInsertChofer.DataSource = ObjChofer.VerificarNombreChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                DropInsertChofer.DataTextField = "Nombre";
+                DropInsertChofer.DataBind();
             }
         }
     }

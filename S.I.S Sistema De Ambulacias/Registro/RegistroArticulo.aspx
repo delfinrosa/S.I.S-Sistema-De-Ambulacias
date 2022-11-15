@@ -122,10 +122,10 @@
 
                                     <asp:TemplateField HeaderText="Id Proveedor">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelIdProveedor" runat="server" Text='<%#Bind("IdProveedor")%>'></asp:Label>
+                                            <asp:Label ID="LabelIdProveedor" runat="server" Text='<%#Bind("Provedor")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control " ID="txtIdProveedor" runat="server" Text='<%#Bind("IdProveedor")%>'></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-select" ID="DropDownList1" runat="server" OnLoad="DropDownList1_Load"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -140,8 +140,11 @@
 
                                     <asp:TemplateField HeaderText="ID Transporte">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelidTransporte" runat="server" Text='<%#Bind("idTransporte")%>'></asp:Label>
+                                            <asp:Label ID="LabelidTransporte" runat="server" Text='<%#Bind("TipoTransporte")%>'></asp:Label>
                                         </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:DropDownList CssClass="form-select" ID="DropDownIDTransporte" runat="server" OnLoad="DropDownIDTransporte_Load"></asp:DropDownList>
+                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                 </Columns>
@@ -198,11 +201,11 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxIdProvedor" class="form-label text-dark ">ID Provedor</label>
+                                        <label for="DropDownListIdProvedor" class="form-label text-dark ">ID Provedor</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIdProvedor" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownListIdProvedor" CssClass="form-select" runat="server" OnLoad="DropDownListIdProvedor_Load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -220,11 +223,11 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxIDTransporte" class="form-label text-dark ">ID Transporte</label>
+                                        <label for="DropInsertTransporte" class="form-label text-dark ">ID Transporte</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDTransporte" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList ID="DropInsertTransporte" CssClass="form-select" runat="server" OnLoad="DropInsertTransporte_load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -234,7 +237,7 @@
 
                     </div>
                     <!-- !_______________________________________________________________________ -->
-
+                    <asp:Label ID="LBLGUARDAR" runat="server" Text="" Visible="false"></asp:Label>
                 </main>
             </form>
             <footer class="py-4 bg-light mt-auto">

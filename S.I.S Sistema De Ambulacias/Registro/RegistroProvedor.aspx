@@ -85,9 +85,6 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="razonSocial">

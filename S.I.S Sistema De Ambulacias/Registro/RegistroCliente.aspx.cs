@@ -80,7 +80,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjCliente.ApellidoMaterno = (fila.FindControl("txtApellidoMaterno") as TextBox).Text;
             ObjCliente.Telefono = (fila.FindControl("txtTelefono") as TextBox).Text;
 
-            ObjDirecciones.IDDireccion = Convert.ToInt32((fila.FindControl("txtIDDIR") as TextBox).Text);
+            ObjDirecciones.IDDireccion =Convert.ToInt32( (fila.FindControl("LabelIDDIR") as Label).Text);
 
             ObjDirecciones.Direccion = (fila.FindControl("txtDireccion") as TextBox).Text;
             ObjDirecciones.CodigoPostal = (fila.FindControl("txtCodigoPostal") as TextBox).Text;

@@ -85,18 +85,15 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
+
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Fecha Programada">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:Label>
+                                            <asp:Label ID="LabelFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>' ></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:Calendar SelectedDate='<%#Bind("FechaProgramada")%>' VisibleDate='<%#Bind("FechaProgramada")%>' ID="CalendarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
-                                            <%--                                            <asp:TextBox ID="txtFechaProgramada" runat="server" Text='<%#Bind("FechaProgramada")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -106,8 +103,6 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:Calendar SelectedDate='<%#Bind("FechaRealizado")%>' ID="CalendarFechaRealizado" runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("FechaRealizado")%>'></asp:Calendar>
-
-                                            <%--                                                                                        <asp:TextBox CssClass="w-100 form-control" ID="txtFechaRealizado" runat="server" Text='<%#Bind("FechaRealizado")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -120,21 +115,31 @@
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="ID Medio Transporte">
+                                    <asp:TemplateField HeaderText="Medio Transporte">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelidMedioTransporte" runat="server" Text='<%#Bind("idMedioTransporte")%>'></asp:Label>
+                                            <asp:Label ID="LabelidMedioTransporte" runat="server" Text='<%#Bind("TipoTransporte")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtidMedioTransporte" runat="server" Text='<%#Bind("idMedioTransporte")%>'></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-select" ID="DropDownTransporteTabla" runat="server" OnLoad="DropDownTransporteTabla_Load"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="ID Cliente Direccion">
+                                    <asp:TemplateField HeaderText="Numero">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelidClienteDireccion" runat="server" Text='<%#Bind("idClienteDireccion")%>'></asp:Label>
+
+                                            <asp:Label ID="LabelNumeroTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtidClienteDireccion" runat="server" Text='<%#Bind("idClienteDireccion")%>'></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-select" ID="DropDownNumeroTabla" runat="server" OnLoad="DropDownNumeroTabla_Load" OnSelectedIndexChanged="DropDownNumeroTabla_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Direccion">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LabelidClienteDireccion" runat="server" Text='<%#Bind("Direccion")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:DropDownList  CssClass="form-select" ID="DropDownDireccionTabla" runat="server" OnLoad="DropDownDireccionTabla_Load" AutoPostBack="true"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -144,8 +149,6 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:CheckBox CssClass="form-check " ID="CheckBoxEstatus" Checked='<%#Bind("Estatus")%>' runat="server" />
-
-                                            <%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtEstatus" runat="server" Text='<%#Bind("Estatus")%>'></asp:TextBox>--%>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -175,9 +178,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-auto">
-                                    <asp:Calendar ID="CalendarInsertarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
-
-                                    <%--                                    <asp:TextBox ID="TxBoxFechaProgramada" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                                    <asp:Calendar OnLoad="CalendarInsertarFechaProgramada_Load" ID="CalendarInsertarFechaProgramada" runat="server" CssClass="w-100 form-control"></asp:Calendar>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -188,9 +189,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-auto">
-                                    <asp:Calendar ID="CalendarInsertarFechaRealizado" runat="server" CssClass="w-100 form-control"></asp:Calendar>
-
-                                    <%--                                    <asp:TextBox ID="TxBoxFechaRealizado" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                                    <asp:Calendar OnLoad="CalendarInsertarFechaRealizado_Load" ID="CalendarInsertarFechaRealizado" runat="server" CssClass="w-100 form-control"></asp:Calendar>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -208,22 +207,32 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxIDMedioTransporte" class="form-label text-dark ">ID Medio Transporte</label>
+                                        <label for="TxBoxIDMedioTransporte" class="form-label text-dark ">Medio Transporte</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDMedioTransporte" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownMedioTransporte" CssClass="form-control" runat="server" OnLoad="DropDownMedioTransporte_Load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row mb-2">
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxIDClienteDireccion" class="form-label text-dark ">ID Cliente Direccion</label>
+                                        <label for="TxBoxIDClienteDireccion" class="form-label text-dark ">Numero</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDClienteDireccion" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList AutoPostBack="true"  ID="DropDownNumeroINSERTAR" CssClass="form-control" runat="server" OnLoad="DropDownNumeroINSERTAR_Load" OnSelectedIndexChanged="DropDownNumeroINSERTAR_SelectedIndexChanged1"></asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-auto">
+                                    <h2 class="text-end">
+                                        <label for="DropDownDireccionINSERTAR" class="form-label text-dark ">Direccion</label>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <asp:DropDownList AutoPostBack="true" Enabled="false" ID="DropDownDireccionINSERTAR" CssClass="form-control" runat="server" OnLoad="DropDownDireccionINSERTAR_Load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -236,7 +245,6 @@
                                 <div class="col-md-7">
                                     <asp:CheckBox ID="CheckBoxInsertarEstatus" CssClass=" form-check " runat="server" />
 
-                                    <%--                                    <asp:TextBox ID="TxBoxEstatus" runat="server" CssClass="form-control" OnTextChanged="TxBoxEstatus_TextChanged"></asp:TextBox>--%>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -263,12 +271,13 @@
             </footer>
         </div>
     </div>
+    <asp:Label ID="Guardar1" runat="server" Text="" Visible="false"></asp:Label>
+    <asp:Label ID="Guardar2" runat="server" Text="" Visible="false"></asp:Label>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="../assets/demo/chart-area-demo.js"></script>
     <script src="../assets/demo/chart-bar-demo.js"></script>
-    <%--    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>--%>
     <script src="../js/datatables-simple-demo.js"></script>
     <script src="../js/tabla.js"></script>
 

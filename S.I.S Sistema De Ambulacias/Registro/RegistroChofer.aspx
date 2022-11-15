@@ -85,9 +85,6 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Nombre">
@@ -99,7 +96,7 @@
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Apellido">
+                                    <asp:TemplateField HeaderText="Apellidos">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelApellido" runat="server" Text='<%#Bind("Apellido")%>'></asp:Label>
                                         </ItemTemplate>
@@ -159,7 +156,7 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxApellido" class="form-label text-dark ">Apellido</label>
+                                        <label for="TxBoxApellido" class="form-label text-dark ">Apellidos</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">

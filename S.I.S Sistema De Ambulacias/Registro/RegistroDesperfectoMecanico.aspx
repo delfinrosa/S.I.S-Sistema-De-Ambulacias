@@ -74,7 +74,6 @@
                     </div>
 
 
-
                     <div class="card mb-4">
                         <div class="card-header ">
                             <i class="fas fa-table me-1"></i>
@@ -86,17 +85,14 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="ID Medio Transporte">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelIDMedioTransporte" runat="server" Text='<%#Bind("IDMedioTransporte")%>'></asp:Label>
+                                            <asp:Label ID="LabelIDMedioTransporte" runat="server" Text='<%#Bind("Transporte")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtIDMedioTransporte" runat="server" Text='<%#Bind("IDMedioTransporte")%>'></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-select" ID="DropDownMedioTransporteTABLA" runat="server" OnLoad="DropDownMedioTransporteTABLA_Load"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -105,9 +101,7 @@
                                             <asp:Label ID="LabelFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Calendar SelectedDate='<%#Bind("Fecha")%>' ID="CalendarFecha" runat="server" CssClass="w-100 form-control" VisibleDate='<%#Bind("Fecha")%>'></asp:Calendar>
-
-                                            <%--                                            <asp:TextBox CssClass="w-100 form-control" ID="txtFecha" runat="server" Text='<%#Bind("Fecha")%>'></asp:TextBox>--%>
+                                            <asp:Calendar SelectedDate='<%#Bind("Fecha")%>' ID="CalendarFecha" runat="server" CssClass="form-control" VisibleDate='<%#Bind("Fecha")%>' ></asp:Calendar>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -148,7 +142,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDMedioTrasporte" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList CssClass="form-select" ID="DropDownMedioTransporteINSERTAR" runat="server" OnLoad="DropDownMedioTransporteINSERTAR_Load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -159,9 +153,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-auto">
-                                    <asp:Calendar ID="CalendarInsertarFecha" runat="server" CssClass="w-100 form-control"></asp:Calendar>
-
-                                    <%--                                    <asp:TextBox ID="TxBoxFecha" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                                    <asp:Calendar OnLoad="CalendarInsertarFecha_Load" ID="CalendarInsertarFecha" runat="server" CssClass="w-100 form-control"></asp:Calendar>
                                 </div>
                             </div>
                             <div class="row mb-2">

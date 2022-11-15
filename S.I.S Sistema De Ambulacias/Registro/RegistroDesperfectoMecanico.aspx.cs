@@ -17,13 +17,16 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
 
         }
-            ObjSIS.DesperfectoMecanico ObjDesperfectoMecanico = new ObjSIS.DesperfectoMecanico();
-
+        ObjSIS.DesperfectoMecanico ObjDesperfectoMecanico = new ObjSIS.DesperfectoMecanico();
+        string idMedioTransporte = "";
+        bool aver;
         protected void btnInsertarArticulo_Click(object sender, EventArgs e)
         {
-            ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt16(TxBoxIDMedioTrasporte.Text);
+            ObjMedioTransporte.TipoTransporte = DropDownMedioTransporteINSERTAR.SelectedValue.ToString();
+            DataTable idTransporte = ObjMedioTransporte.VerificarIDMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt32(idTransporte.Rows[0][0].ToString());
             ObjDesperfectoMecanico.Fecha = CalendarInsertarFecha.SelectedDate.ToShortDateString();
-            ObjDesperfectoMecanico.Descripcion= TxBoxDescripcion.Text;
+            ObjDesperfectoMecanico.Descripcion = TxBoxDescripcion.Text;
 
             string strError1 = ObjDesperfectoMecanico.InsertarDesperfectoMecanico(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             cargar();
@@ -57,18 +60,25 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void datatablesSimple_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            aver = true;
+            GridViewRow fila = datatablesSimple.Rows[e.NewEditIndex];
+            idMedioTransporte = (fila.FindControl("LabelIDMedioTransporte") as Label).Text;
+
             datatablesSimple.EditIndex = e.NewEditIndex;
             cargar();
         }
 
         protected void datatablesSimple_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
             GridViewRow fila = datatablesSimple.Rows[e.RowIndex];
             ObjDesperfectoMecanico.IDDesperfectoMecanico = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
-            ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt32((fila.FindControl("txtIDMedioTransporte") as TextBox).Text);
-            ObjDesperfectoMecanico.Fecha = (fila.FindControl("CalendarFecha") as Calendar).SelectedDate.ToShortDateString();
 
-            //ObjDesperfectoMecanico.Fecha = (Convert.ToDateTime((fila.FindControl("txtFecha") as TextBox).Text).Date).ToString();
+            ObjMedioTransporte.TipoTransporte = (fila.FindControl("DropDownMedioTransporteTABLA") as DropDownList).SelectedValue.ToString();
+            DataTable idTransporte = ObjMedioTransporte.VerificarIDMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            ObjDesperfectoMecanico.IDMedioTransporte = Convert.ToInt32(idTransporte.Rows[0][0].ToString());
+
+            ObjDesperfectoMecanico.Fecha = (fila.FindControl("CalendarFecha") as Calendar).SelectedDate.ToShortDateString();
             ObjDesperfectoMecanico.Descripcion = (fila.FindControl("txtDescripcion") as TextBox).Text;
 
             //ACTUALIZAR
@@ -91,9 +101,6 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
                 PdfPTable table = new PdfPTable(dt.Columns.Count);
-
-
-
 
                 document.Add(new Paragraph(20, "Reporte Desperfecto Mecanico", fontTitle) { Alignment = Element.ALIGN_CENTER });
 
@@ -127,6 +134,39 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 Response.End();
 
             }
+        }
+        ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
+
+        protected void DropDownMedioTransporteTABLA_Load(object sender, EventArgs e)
+        {
+            if (aver)
+            {
+                DropDownList dropDownList = (DropDownList)sender;
+                dropDownList.DataSource = ObjMedioTransporte.VerificarTODOSMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                dropDownList.DataTextField = "TipoTransporte";
+                dropDownList.DataBind();
+                if (idMedioTransporte!="" && idMedioTransporte != null)
+                {
+
+                dropDownList.SelectedValue = idMedioTransporte;
+                }
+            }
+        }
+
+        protected void DropDownMedioTransporteINSERTAR_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                DropDownList dropDownList = (DropDownList)sender;
+                dropDownList.DataSource = ObjMedioTransporte.VerificarTODOSMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                dropDownList.DataTextField = "TipoTransporte";
+                dropDownList.DataBind();
+            }
+        }
+
+        protected void CalendarInsertarFecha_Load(object sender, EventArgs e)
+        {
+            CalendarInsertarFecha.SelectedDate = DateTime.Today;
         }
     }
 }

@@ -60,22 +60,31 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.TextBox TxBoxCosto;
 
         /// <summary>
-        /// Control TxBoxIDMedioTransporte.
+        /// Control DropDownMedioTransporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIDMedioTransporte;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownMedioTransporte;
 
         /// <summary>
-        /// Control TxBoxIDClienteDireccion.
+        /// Control DropDownNumeroINSERTAR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIDClienteDireccion;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownNumeroINSERTAR;
+
+        /// <summary>
+        /// Control DropDownDireccionINSERTAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownDireccionINSERTAR;
 
         /// <summary>
         /// Control CheckBoxInsertarEstatus.
@@ -94,5 +103,23 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnInsertarTraslado;
+
+        /// <summary>
+        /// Control Guardar1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Guardar1;
+
+        /// <summary>
+        /// Control Guardar2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Guardar2;
     }
 }

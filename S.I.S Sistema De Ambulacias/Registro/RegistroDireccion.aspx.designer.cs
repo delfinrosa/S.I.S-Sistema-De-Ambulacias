@@ -51,13 +51,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         protected global::System.Web.UI.WebControls.TextBox TxBoxCodigoPostal;
 
         /// <summary>
-        /// Control TxBoxIDliente.
+        /// Control DropDownTelefonoINSERTAR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIDliente;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTelefonoINSERTAR;
 
         /// <summary>
         /// Control BtnInsertarDireccion.
@@ -67,5 +67,14 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnInsertarDireccion;
+
+        /// <summary>
+        /// Control guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label guardar;
     }
 }

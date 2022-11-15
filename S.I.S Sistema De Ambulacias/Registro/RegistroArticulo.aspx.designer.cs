@@ -69,13 +69,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
         protected global::System.Web.UI.WebControls.TextBox TxBoxStockActual;
 
         /// <summary>
-        /// Control TxBoxIdProvedor.
+        /// Control DropDownListIdProvedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIdProvedor;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListIdProvedor;
 
         /// <summary>
         /// Control TxBoxStockMinimo.
@@ -87,13 +87,13 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
         protected global::System.Web.UI.WebControls.TextBox TxBoxStockMinimo;
 
         /// <summary>
-        /// Control TxBoxIDTransporte.
+        /// Control DropInsertTransporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxBoxIDTransporte;
+        protected global::System.Web.UI.WebControls.DropDownList DropInsertTransporte;
 
         /// <summary>
         /// Control BtnInsertarProvedor.
@@ -103,5 +103,14 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnInsertarProvedor;
+
+        /// <summary>
+        /// Control LBLGUARDAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBLGUARDAR;
     }
 }

@@ -86,9 +86,6 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
-                                        </EditItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Tipo Combustible">
@@ -109,12 +106,12 @@
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="ID Chofer">
+                                    <asp:TemplateField HeaderText="Chofer">
                                         <ItemTemplate>
-                                            <asp:Label ID="LabelidChofer" runat="server" Text='<%#Bind("idChofer")%>'></asp:Label>
+                                            <asp:Label ID="LabelChofer" runat="server" Text='<%#Bind("Nombre")%>'></asp:Label>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtidChofer" runat="server" Text='<%#Bind("idChofer")%>'></asp:TextBox>
+                                            <asp:DropDownList ID="DropDownChoferTABLA" CssClass="form-control" runat="server" OnLoad="DropDownChoferTABLA_Load"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -162,11 +159,11 @@
 
                                 <div class="col-auto">
                                     <h2 class="text-end">
-                                        <label for="TxBoxIDChofer" class="form-label text-dark ">ID Chofer</label>
+                                        <label for="DropInsertChofer" class="form-label text-dark ">Chofer</label>
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDChofer" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList ID="DropInsertChofer" CssClass="form-select" runat="server" OnLoad="DropInsertChofer_Load"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">

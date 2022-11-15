@@ -23,18 +23,26 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
 
         }
-            ObjSIS.Chofer ObjChofer = new ObjSIS.Chofer();
+        ObjSIS.Chofer ObjChofer = new ObjSIS.Chofer();
 
         protected void btnInsertarArticulo_Click(object sender, EventArgs e)
         {
-            ObjChofer.Nombre = TxBoxNombre.Text;
-            ObjChofer.Apellido = TxBoxApellido.Text;
-            ObjChofer.RFC= TxBoxRFC.Text;
-            ObjChofer.Salario= Convert.ToDecimal(TxBoxIdSalario.Text);
+            if (TxBoxNombre.Text != "" && TxBoxApellido.Text != "" && TxBoxRFC.Text != "" && TxBoxIdSalario.Text != "")
+            {
 
-            string strError1 = ObjChofer.InsertarChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
-            cargar();
 
+                ObjChofer.Nombre = TxBoxNombre.Text;
+                ObjChofer.Apellido = TxBoxApellido.Text;
+                ObjChofer.RFC = TxBoxRFC.Text;
+                ObjChofer.Salario = Convert.ToDecimal(TxBoxIdSalario.Text);
+
+                string strError1 = ObjChofer.InsertarChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                cargar();
+                TxBoxNombre.Text = "";
+                TxBoxApellido.Text = "";
+                TxBoxRFC.Text = "";
+                TxBoxIdSalario.Text = "";
+            }
         }
 
         protected void datatablesSimple_Load(object sender, EventArgs e)
@@ -84,7 +92,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             DataTable dt = new DataTable();
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
-            dt =ObjChofer.VerificarChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+            dt = ObjChofer.VerificarChofer(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             if (dt.Rows.Count > 0)
             {
                 document.Open();

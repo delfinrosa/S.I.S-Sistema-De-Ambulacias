@@ -86,8 +86,14 @@
                                         <ItemTemplate>
                                             <asp:Label ID="LabelID" runat="server" Text='<%#Bind("ID")%>'></asp:Label>
                                         </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Telefono">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTelefono" runat="server" Text='<%#Bind("Telefono")%>'></asp:Label>
+                                        </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox CssClass="w-100 form-control" ID="txtID" runat="server" Text='<%#Bind("ID")%>'></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownTelefonoTABLA" runat="server" OnLoad="DropDownTelefonoTABLA_Load"></asp:DropDownList>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -159,7 +165,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="TxBoxIDliente" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownTelefonoINSERTAR" CssClass="form-control" runat="server" OnLoad="DropDownTelefonoINSERTAR_Load"></asp:DropDownList>
                                 </div>
                             </div>
 
@@ -187,6 +193,8 @@
             </footer>
         </div>
     </div>
+    <asp:Label Visible="false" ID="guardar" runat="server" Text=""></asp:Label>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
