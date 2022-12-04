@@ -80,6 +80,7 @@
     <Content Include="css\styles.css" />
     <Content Include="inicio.aspx" />
     <Content Include="js\datatables-simple-demo.js" />
+    <Content Include="js\Grafica.js" />
     <Content Include="js\scripts.js" />
     <Content Include="js\tabla.js" />
     <Content Include="Registro\RegistroArticulo.aspx" />

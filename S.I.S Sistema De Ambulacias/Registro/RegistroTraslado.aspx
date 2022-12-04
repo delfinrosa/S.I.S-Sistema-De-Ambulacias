@@ -222,7 +222,9 @@
                                     </h2>
                                 </div>
                                 <div class="col-md-7">
-                                    <asp:DropDownList AutoPostBack="true"  ID="DropDownNumeroINSERTAR" CssClass="form-control" runat="server" OnLoad="DropDownNumeroINSERTAR_Load" OnSelectedIndexChanged="DropDownNumeroINSERTAR_SelectedIndexChanged1"></asp:DropDownList>
+                                    <asp:DropDownList  AutoPostBack="true"  ID="DropDownNumeroINSERTAR" CssClass="form-control" runat="server" OnLoad="DropDownNumeroINSERTAR_Load" OnSelectedIndexChanged="DropDownNumeroINSERTAR_SelectedIndexChanged1">
+                                        <asp:ListItem>Numero</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row mb-2">

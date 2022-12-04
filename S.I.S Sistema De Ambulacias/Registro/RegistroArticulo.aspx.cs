@@ -48,7 +48,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
 
             ObjMedioTransporte.TipoTransporte = DropInsertTransporte.SelectedItem.ToString();
             DataTable idTransporte = ObjMedioTransporte.VerificarIDMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
-            ObjArticuloTransporte.idTransporte = Convert.ToInt32(idProvedor.Rows[0][0].ToString());
+            ObjArticuloTransporte.idTransporte = Convert.ToInt32(idTransporte.Rows[0][0].ToString());
 
 
             string strError1 = ObjArticulo.InsertarArticulo(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
@@ -163,25 +163,33 @@ namespace S.I.S_Sistema_De_Ambulacias.Reportes
                 table.WidthPercentage = 90;
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
-                foreach (DataRow i in dt.Rows)
+
+                foreach (DataColumn c in dt.Columns)
+                {
+                    table.AddCell(new Phrase(c.ColumnName, font9));
+                }
+
+                foreach (DataRow r in dt.Rows)
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        for (int j = 0; j < dt.Columns.Count; j++)
+                        for (int h = 0; h < dt.Columns.Count; h++)
                         {
-                            table.AddCell(new Phrase(i[j].ToString(), font9));
+                            table.AddCell(new Phrase(r[h].ToString(), font9));
                         }
                     }
-                    document.Add(table);
                 }
-                document.Close();
+                document.Add(table);
+
+            }
+            document.Close();
                 Response.ContentType = "application/pdf";
                 Response.AddHeader("content-disposition", "attachment;filename=ReporteArticulos" + ".pdf");
                 HttpContext.Current.Response.Write(document);
                 Response.Flush();
                 Response.End();
 
-            }
+            
 
         }
 

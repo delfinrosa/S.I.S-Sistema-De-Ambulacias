@@ -53,9 +53,12 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void datatablesSimple_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            ObjDesperfectoMecanico.IDDesperfectoMecanico = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
-            ObjDesperfectoMecanico.EliminarDesperfectoMecanico(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
-            cargar();
+            if (!IsPostBack)
+            {
+                ObjDesperfectoMecanico.IDDesperfectoMecanico = Convert.ToInt32(datatablesSimple.DataKeys[e.RowIndex].Values[0]);
+                ObjDesperfectoMecanico.EliminarDesperfectoMecanico(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
+                cargar();
+            }
         }
 
         protected void datatablesSimple_RowEditing(object sender, GridViewEditEventArgs e)
@@ -115,25 +118,32 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 table.WidthPercentage = 90;
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
-                foreach (DataRow i in dt.Rows)
+
+                foreach (DataColumn c in dt.Columns)
+                {
+                    table.AddCell(new Phrase(c.ColumnName, font9));
+                }
+
+                foreach (DataRow r in dt.Rows)
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        for (int j = 0; j < dt.Columns.Count; j++)
+                        for (int h = 0; h < dt.Columns.Count; h++)
                         {
-                            table.AddCell(new Phrase(i[j].ToString(), font9));
+                            table.AddCell(new Phrase(r[h].ToString(), font9));
                         }
                     }
-                    document.Add(table);
                 }
-                document.Close();
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=ReporteDesperfectoMecanico" + ".pdf");
-                HttpContext.Current.Response.Write(document);
-                Response.Flush();
-                Response.End();
+                document.Add(table);
 
             }
+            document.Close();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=ReporteDesperfectoMecanico" + ".pdf");
+            HttpContext.Current.Response.Write(document);
+            Response.Flush();
+            Response.End();
+
         }
         ObjSIS.MedioTransporte ObjMedioTransporte = new ObjSIS.MedioTransporte();
 
@@ -145,10 +155,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 dropDownList.DataSource = ObjMedioTransporte.VerificarTODOSMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
                 dropDownList.DataTextField = "TipoTransporte";
                 dropDownList.DataBind();
-                if (idMedioTransporte!="" && idMedioTransporte != null)
+                if (idMedioTransporte != "" && idMedioTransporte != null)
                 {
 
-                dropDownList.SelectedValue = idMedioTransporte;
+                    dropDownList.SelectedValue = idMedioTransporte;
                 }
             }
         }
@@ -166,7 +176,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void CalendarInsertarFecha_Load(object sender, EventArgs e)
         {
-            CalendarInsertarFecha.SelectedDate = DateTime.Today;
+            if (!IsPostBack)
+            {
+                CalendarInsertarFecha.SelectedDate = DateTime.Today;
+            }
         }
     }
 }

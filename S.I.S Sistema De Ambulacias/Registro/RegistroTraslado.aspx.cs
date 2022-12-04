@@ -18,8 +18,8 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         ObjSIS.Proveedor ObjProveedor = new ObjSIS.Proveedor();
         ObjSIS.Cliente ObjCliente = new ObjSIS.Cliente();
         ObjSIS.Direcciones ObjDirecciones = new ObjSIS.Direcciones();
-        ObjSIS.Traslado ObjTraslado = new ObjSIS.Traslado();            
-        ObjSIS.ClienteDirecciones ObjClienteDireccion= new ObjSIS.ClienteDirecciones();
+        ObjSIS.Traslado ObjTraslado = new ObjSIS.Traslado();
+        ObjSIS.ClienteDirecciones ObjClienteDireccion = new ObjSIS.ClienteDirecciones();
 
         string idtransporteTabla;
         string NumeroTelefono;
@@ -57,7 +57,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ids = ObjCliente.VerificarIDConTelefonoCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             ObjClienteDireccion.idCliente = Convert.ToInt32(ids.Rows[0][0].ToString());
 
-            ObjDirecciones.Direccion = DropDownDireccionINSERTAR.SelectedValue ;
+            ObjDirecciones.Direccion = DropDownDireccionINSERTAR.SelectedValue;
             ids = ObjDirecciones.VerificarIDCONDireccionesNumero(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             ObjClienteDireccion.idDireccion = Convert.ToInt32(ids.Rows[0][0].ToString());
 
@@ -118,11 +118,11 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             ObjTraslado.Costo = Convert.ToSingle((fila.FindControl("txtCosto") as TextBox).Text);
 
 
-            ObjMedioTransporte.TipoTransporte = (fila.FindControl("DropDownTransporteTabla") as DropDownList).SelectedValue; 
+            ObjMedioTransporte.TipoTransporte = (fila.FindControl("DropDownTransporteTabla") as DropDownList).SelectedValue;
             DataTable ids = ObjMedioTransporte.VerificarIDMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             ObjTraslado.idMedioTransporte = Convert.ToInt32(ids.Rows[0][0].ToString());
 
-            ObjCliente.Telefono = (fila.FindControl("DropDownNumeroTabla") as DropDownList).SelectedValue; 
+            ObjCliente.Telefono = (fila.FindControl("DropDownNumeroTabla") as DropDownList).SelectedValue;
             ids = ObjCliente.VerificarIDConTelefonoCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
             ObjClienteDireccion.idCliente = Convert.ToInt32(ids.Rows[0][0].ToString());
 
@@ -178,25 +178,26 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
                 table.WidthPercentage = 90;
                 PdfPCell cell = new PdfPCell(new Phrase("columns"));
                 cell.Colspan = dt.Columns.Count;
-                foreach (DataRow i in dt.Rows)
+                foreach (DataRow r in dt.Rows)
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        for (int j = 0; j < dt.Columns.Count; j++)
+                        for (int h = 0; h < dt.Columns.Count; h++)
                         {
-                            table.AddCell(new Phrase(i[j].ToString(), font9));
+                            table.AddCell(new Phrase(r[h].ToString(), font9));
                         }
                     }
-                    document.Add(table);
                 }
-                document.Close();
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=ReporteTraslados" + ".pdf");
-                HttpContext.Current.Response.Write(document);
-                Response.Flush();
-                Response.End();
-
+                document.Add(table);
             }
+            document.Close();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=ReporteTraslados" + ".pdf");
+            HttpContext.Current.Response.Write(document);
+            Response.Flush();
+            Response.End();
+
+
         }
         public void cargarDropDownPROVEDOR(DropDownList lista, string IDDrop)
         {
@@ -252,7 +253,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         }
         protected void DropDownDireccionTabla_Load(object sender, EventArgs e)
         {
-            DropDownList dropDowndireccion= (DropDownList)sender;
+            DropDownList dropDowndireccion = (DropDownList)sender;
             dropDowndireccion.Items.Add(DirecionCliente);
             dropDowndireccion.SelectedValue = DirecionCliente;
             dropDireccion = sender;
@@ -262,6 +263,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
         {
             if (!IsPostBack)
             {
+
                 DropDownMedioTransporte.DataSource = ObjMedioTransporte.VerificarTODOSMedioTransporte(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
                 DropDownMedioTransporte.DataTextField = "TipoTransporte";
                 DropDownMedioTransporte.DataBind();
@@ -273,8 +275,10 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
             if (!IsPostBack)
             {
                 DropDownNumeroINSERTAR.DataSource = ObjCliente.VerificarTelefonoCliente(ConfigurationManager.ConnectionStrings["ConexionPrincipal"].ConnectionString);
-                DropDownNumeroINSERTAR.DataTextField = "Telefono";
+                DropDownNumeroINSERTAR.DataTextField += "Telefono";
                 DropDownNumeroINSERTAR.DataBind();
+                DropDownNumeroINSERTAR.Items.Add("Numero");
+                DropDownNumeroINSERTAR.SelectedValue = "Numero";
             }
         }
 
@@ -286,6 +290,7 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void DropDownNumeroINSERTAR_SelectedIndexChanged1(object sender, EventArgs e)
         {
+            DropDownNumeroINSERTAR.Items.Remove("Numero");
             DropDownList dropDownNumero = (DropDownList)dropDireccionINSERTAR;
             dropDownNumero.Enabled = true;
             ObjDirecciones.telelfono = DropDownNumeroINSERTAR.SelectedValue;
@@ -298,12 +303,20 @@ namespace S.I.S_Sistema_De_Ambulacias.Registro
 
         protected void CalendarInsertarFechaProgramada_Load(object sender, EventArgs e)
         {
-            CalendarInsertarFechaProgramada.SelectedDate = DateTime.Today;
+            if (!IsPostBack)
+            {
+
+                CalendarInsertarFechaProgramada.SelectedDate = DateTime.Today;
+            }
         }
 
         protected void CalendarInsertarFechaRealizado_Load(object sender, EventArgs e)
         {
-            CalendarInsertarFechaRealizado.SelectedDate = DateTime.Today;
+            if (!IsPostBack)
+            {
+
+                CalendarInsertarFechaRealizado.SelectedDate = DateTime.Today;
+            }
         }
     }
 }

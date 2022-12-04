@@ -61,6 +61,12 @@ namespace LibSIS
                     return strError;
                 }
             }
+            public DataTable ReportePDFArticulo(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM Articulo", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
             public string ActualizarArticulo(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_EditarArticulo] {IDArticulo} , '{Descripcion}' , '{precioUnitario}','{stockActual}' ,'{IdProveedor}','{stockMinimo}'";
@@ -240,7 +246,7 @@ namespace LibSIS
             public string InsertarDesperfectoMecanico(string strconexion)
             {
                 string[] Arefecha = Fecha.Split('/');
-                string Fechabien = Arefecha[1] + "/" + Arefecha[0] + "/" + Arefecha[2];
+                string Fechabien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 string striSQL = $"EXECUTE [dbo].[sp_AgregarDesperfectoMecanico] '{IDMedioTransporte}', '{Fechabien}', '{Descripcion}'";
                 string strError = "";
                 int intRegistrosAfectados;
@@ -262,6 +268,26 @@ namespace LibSIS
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
+            public DataTable GraficaDesperfectosHistorico(string strconexion)
+            {
+                string striSQL = $"SELECT GRA.Transporte,COUNT(GRA.Problemas) AS Problemas FROM VWGraficaDesperfectos GRA GROUP BY GRA.Transporte,GRA.Problemas", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaDesperfectosAnual(string strconexion)
+            {
+                string striSQL = $"SELECT GRA.Transporte,COUNT(GRA.Problemas) AS Problemas,YEAR( GRA.Fecha) AS Fecha FROM VWGraficaDesperfectos GRA " +
+                    $"WHERE YEAR(GRA.Fecha)= YEAR(GETDATE()) " +
+                    $"GROUP BY GRA.Transporte,GRA.Problemas,YEAR(GRA.Fecha)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaDesperfectosMensual(string strconexion)
+            {
+                string striSQL = $"SELECT GRA.Transporte,COUNT(GRA.Problemas) AS Problemas,MONTH( GRA.Fecha) AS Fecha FROM VWGraficaDesperfectos GRA WHERE MONTH(GRA.Fecha)= MONTH(GETDATE()) GROUP BY GRA.Transporte,GRA.Problemas,MONTH(GRA.Fecha)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
             public string EliminarDesperfectoMecanico(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_EliminarDesperfectoMecanico]  {IDDesperfectoMecanico}";
@@ -280,7 +306,7 @@ namespace LibSIS
             public string ActualizarDesperfectoMecanico(string strconexion)
             {
                 string[] Arefecha = Fecha.Split('/');
-                string Fechabien = Arefecha[1] + "/" + Arefecha[0] + "/" + Arefecha[2];
+                string Fechabien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 string striSQL = $"EXECUTE [dbo].[sp_EditarDesperfectoMecanico] {IDDesperfectoMecanico} , '{IDMedioTransporte}' , '{Fechabien}','{Descripcion}'";
                 string strError = "";
                 int intRegistrosAfectados;
@@ -634,6 +660,28 @@ namespace LibSIS
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
+            public DataTable GraficaMedioTransporteMensual(string strconexion)
+            {
+                string striSQL = $"SELECT TRAS.Transporte, count(TRAS.Traslado) AS Traslado ,MONTH( TRAS.FechaRealizado) " +
+                    $"FROM VWGraficaTransporte AS TRAS WHERE MONTH(TRAS.FechaRealizado)= MONTH(GETDATE()) " +
+                    $"GROUP BY TRAS.Transporte, TRAS.Traslado ,MONTH(TRAS.FechaRealizado)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaMedioTransporteAnual(string strconexion)
+            {
+                string striSQL = $"SELECT TRAS.Transporte, COUNT(TRAS.Traslado) AS Traslado ,YEAR( TRAS.FechaRealizado) " +
+                    $"FROM VWGraficaTransporte AS TRAS WHERE YEAR(TRAS.FechaRealizado)= YEAR(GETDATE()) " +
+                    $"GROUP BY TRAS.Transporte, TRAS.Traslado ,YEAR(TRAS.FechaRealizado)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaMedioTransporteHistorico(string strconexion)
+            {
+                string striSQL = $"SELECT TRAS.Transporte, count(TRAS.Traslado) AS Traslado FROM VWGraficaTransporte AS TRAS GROUP BY TRAS.Transporte, TRAS.Traslado ", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
             public string EliminarMedioTransporte(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_EliminarMedioTransporte]  {IDMedioTransporte}";
@@ -680,9 +728,9 @@ namespace LibSIS
             public string InsertarTraslado(string strconexion)
             {
                 string[] Arefecha = FechaProgramada.Split('/');
-                string fechaprogramadabien = Arefecha[1] + "/" + Arefecha[0] + "/" + Arefecha[2];
+                string fechaprogramadabien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 Arefecha = FechaRealizado.Split('/');
-                string fecharealizadobien = Arefecha[1] + "/" + Arefecha[0] + "/" + Arefecha[2];
+                string fecharealizadobien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 string striSQL = $"EXECUTE [dbo].[sp_AgregarTraslado] '{fechaprogramadabien}' , '{fecharealizadobien}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
                 string strError = "";
                 int intRegistrosAfectados;
@@ -704,6 +752,33 @@ namespace LibSIS
                 DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
                 return tabla;
             }
+            public DataTable GraficaCostos(string strconexion)
+            {
+                string striSQL = $"SELECT * FROM [dbo].[VWGraficaCostos]", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaCostosMensual(string strconexion)
+            {
+                string striSQL = $"SELECT DAY(GAN.Fecha) Dia ,SUM( Gan.Dinero) FROM VWGraficaDeGanancia AS GAN " +
+                    $"WHERE MONTH(GAN.Fecha) = MONTH(GETDATE()) GROUP BY  DAY(GAN.Fecha)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaCostosAnual(string strconexion)
+            {
+                string striSQL = $"SELECT MONTH(GAN.Fecha) Dia ,SUM( Gan.Dinero) AS Dinero FROM VWGraficaDeGanancia AS GAN " +
+                    $"WHERE YEAR(GAN.Fecha) = YEAR(GETDATE()) GROUP BY  MONTH(GAN.Fecha)", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
+            public DataTable GraficaCostosHistorico(string strconexion)
+            {
+                string striSQL = $"SELECT MONTH(GAN.fecha) AS Mes,YEAR(GAN.fecha) AS anio ,SUM( Gan.Dinero) FROM VWGraficaDeGanancia AS GAN  " +
+                    $"GROUP BY MONTH(GAN.Fecha), YEAR(GAN.fecha) ", error = "";
+                DataTable tabla = cslUtileriasBD.clsSQLServer.getDatatable(strconexion, striSQL, ref error);
+                return tabla;
+            }
             public string EliminarTraslado(string strconexion)
             {
                 string striSQL = $"EXECUTE [dbo].[sp_EliminarTraslado]  {IDTraslado}";
@@ -721,10 +796,10 @@ namespace LibSIS
             }
             public string ActualizarTraslado(string strconexion)
             {
-                string[] Arefecha  = FechaProgramada.Split('/');
-                string fechaprogramadabien = Arefecha[1]+"/"+Arefecha[0]+"/" + Arefecha[2];
+                string[] Arefecha = FechaProgramada.Split('/');
+                string fechaprogramadabien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 Arefecha = FechaRealizado.Split('/');
-                string fecharealizadobien = Arefecha[1] + "/" + Arefecha[0] + "/" + Arefecha[2];
+                string fecharealizadobien = Arefecha[0] + "/" + Arefecha[1] + "/" + Arefecha[2];
                 string striSQL = $"EXECUTE [dbo].[sp_EditarTraslado] {IDTraslado} , '{fechaprogramadabien}' , '{fecharealizadobien}' , '{Costo}' , '{idMedioTransporte}' , '{idClienteDireccion}' , '{Estatus}' ";
                 string strError = "";
                 int intRegistrosAfectados;
